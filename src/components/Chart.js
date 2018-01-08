@@ -23,19 +23,37 @@ class Chart extends Component{
 				<div style = {styles}>
 				<Bar
 						data={this.state.backupChartData }
-						options={{maintainAspectRatio: true}}
+						options={{maintainAspectRatio: false}}
 					/>
 				</div>
 				<div style = {styles}>
 					<Bar
 						data={this.state.restoreChartData }
-						options={{maintainAspectRatio: true}}
+						options={{maintainAspectRatio: false}}
 					/>
 				</div>
 				<div style = {styles}>
 					<Bar
 						data={this.state.mountChartData }
-						options={{maintainAspectRatio: true}}
+						options={{maintainAspectRatio: false}}
+					/>
+				</div>
+				<div style = {styles}>
+				<Bar
+						data={this.state.backupChartData }
+						options={{maintainAspectRatio: false}}
+					/>
+				</div>
+				<div style = {styles}>
+					<Bar
+						data={this.state.restoreChartData }
+						options={{maintainAspectRatio: false}}
+					/>
+				</div>
+				<div style = {styles}>
+					<Bar
+						data={this.state.mountChartData }
+						options={{maintainAspectRatio: false}}
 					/>
 				</div>
 			</div>
