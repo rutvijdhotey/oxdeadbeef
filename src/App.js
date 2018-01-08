@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Chart from './components/Chart'
+import Dashboard from './Dashboard'
+import { render } from 'react-dom';
+import { withRR4, Nav, NavText } from 'react-sidenav';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+const SideNav = withRR4();
+  
 class App extends Component {
   constructor() {
     super();
@@ -12,12 +17,25 @@ class App extends Component {
       mountChartData: {}
     }
   }
+  
 
   componentWillMount() {
     this.getBackupChartData();
     this.getMountChartData();
     this.getRestoreChartData();
   }
+  
+   renderDashboard = () => {
+        return <Dashboard backupChartData = {this.state.backupChartData} mountChartData = {this.state.mountChartData} restoreChartData = {this.state.restoreChartData}/>;
+    }
+
+    renderSales = () => {
+        return <div>Sales</div>;
+    }
+
+    renderProducts = () => {
+        return <div>Products</div>;
+    }
 
 //Setting the state of the backups whenever we need the top 10. We can use this function when we want the Inflight Details as well.
   getBackupChartData() {
@@ -72,16 +90,36 @@ class App extends Component {
       }
     });
   }
+  
+  
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-          <Chart backupChartData = {this.state.backupChartData} mountChartData = {this.state.mountChartData} restoreChartData = {this.state.restoreChartData}/>
-      </div>
+		<Router>
+			<div style={{display: 'flex', flexDirection: 'row'}}>
+				<div style={{width: 220}}>
+					<SideNav default='dashboard' highlightBgColor='blue' highlightColor='white'>
+						<Nav id='dashboard'>
+							<NavText>  Dashboard </NavText>
+						</Nav>
+						<Nav id='sales'>
+							<NavText> Sales </NavText>
+							<Nav id='list'>
+								<NavText> List Sales </NavText>
+							</Nav>
+						</Nav>
+						<Nav id='products'>
+							<NavText>  Products </NavText>
+						</Nav>
+					</SideNav>
+				</div>
+				<div style={{padding: 20}}>
+					<Route exact path="/dashboard" render={this.renderDashboard}/>
+					<Route path="/sales" render={this.renderSales}/>
+					<Route path="/products" render={this.renderProducts}/>
+				</div>
+			</div>
+		</Router>
     );
   }
 }
