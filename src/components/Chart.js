@@ -18,42 +18,69 @@ class Chart extends Component{
 	render() {
 		var stylesBarCharts = {
 			width: '50%',
+			height: '30%',
 			float: 'right'
 		};
 		var stylesLineCharts = {
 			width: '90%',
-			margin: '0 auto'
+			height: '10%',
+			margin: '0 auto',
+			bottom: '20px'
 		};
+		
+		//options Bar Graph
+		var optionsBarGraph = {
+			maintainAspectRatio: true,
+			scales: {
+		    xAxes: [{
+		                gridLines: {
+		                    display:false
+		                }
+		            }],
+		    yAxes: [{
+		                gridLines: {
+		                    display:false
+		                }   
+		            }]
+		    }
+		}
+
+		//Options Line Graph
+		var optionsLineGraph = {
+			maintainAspectRatio: true,
+			showLines: true
+		}
+
 		return (
 			<div className = "barCharts">
 				<div style = {stylesLineCharts}>
 				<Line
 						data={this.state.performanceChartData }
-						options={{maintainAspectRatio: false}}
+						options={optionsLineGraph}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
 				<Bar
 						data={this.state.backupVmChartData }
-						options={{maintainAspectRatio: false}}
+						options={optionsBarGraph}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
 					<Bar
 						data={this.state.restoreVmChartData }
-						options={{maintainAspectRatio: false}}
+						options={optionsBarGraph}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
 					<Bar
 						data={this.state.backupVmdkChartData }
-						options={{maintainAspectRatio: false}}
+						options={optionsBarGraph}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
 				<Bar
 						data={this.state.restoreVmdkChartData }
-						options={{maintainAspectRatio: false}}
+						options={optionsBarGraph}
 					/>
 				</div>
 			</div>

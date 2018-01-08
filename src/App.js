@@ -65,13 +65,23 @@ class App extends Component {
     this.setState({
       performanceChartData: {
         labels : ["b1","b2","b3","b4","b5","b6","b10"],
-        datasets: [ {fillColor: "rgba(220,220,220,0.2)",
-           strokeColor: "rgba(220,220,220,1)",
-           data: [65, 59, 80, 81, 56, 55, 40]
+        datasets: [
+          // Add the data for the Performance here
+          {data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: 'red'
           },
-          {fillColor: "rgba(151,187,205,0.2)",
-           strokeColor: "rgba(151,187,205,1)",
-           data: [28, 48, 40, 19, 86, 27, 90]
+          {data: [28, 48, 40, 19, 86, 27, 90],
+            fill: false,
+            borderColor: 'green'
+          },
+          {data: [11, 4, 43, 9, 6, 2, 92],
+            fill: false,
+            borderColor: 'brown'
+          },
+          {data: [8, 12, 4, 9, 34, 7, 9],
+            fill: false,
+            borderColor: 'blue'
           }
         ]
       }
