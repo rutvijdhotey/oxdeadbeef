@@ -5,17 +5,39 @@ class Chart extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			backupChartData: props.backupChartData
+			backupChartData: props.backupChartData,
+			restoreChartData: props.restoreChartData,
+			mountChartData: props.mountChartData
 		}
 	}
 
+	
+
 	render() {
+		var styles = {
+		width: '33%',
+		float: 'right'
+	};
 		return (
-			<div className = "chart">
+			<div className = "barCharts">
+				<div style = {styles}>
 				<Bar
-					data={this.state.backupChartData }
-					options={{maintainAspectRatio: true}}
-				/>
+						data={this.state.backupChartData }
+						options={{maintainAspectRatio: true}}
+					/>
+				</div>
+				<div style = {styles}>
+					<Bar
+						data={this.state.restoreChartData }
+						options={{maintainAspectRatio: true}}
+					/>
+				</div>
+				<div style = {styles}>
+					<Bar
+						data={this.state.mountChartData }
+						options={{maintainAspectRatio: true}}
+					/>
+				</div>
 			</div>
 			)
 	}
