@@ -29,12 +29,12 @@ class App extends Component {
         return <Dashboard backupChartData = {this.state.backupChartData} mountChartData = {this.state.mountChartData} restoreChartData = {this.state.restoreChartData}/>;
     }
 
-    renderSales = () => {
-        return <div>Sales</div>;
+    renderInflight = () => {
+        return <div>Inflight Operations</div>;
     }
 
-    renderProducts = () => {
-        return <div>Products</div>;
+    renderStatistics = () => {
+        return <div>Statistics</div>;
     }
 
 //Setting the state of the backups whenever we need the top 10. We can use this function when we want the Inflight Details as well.
@@ -102,21 +102,18 @@ class App extends Component {
 						<Nav id='dashboard'>
 							<NavText>  Dashboard </NavText>
 						</Nav>
-						<Nav id='sales'>
-							<NavText> Sales </NavText>
-							<Nav id='list'>
-								<NavText> List Sales </NavText>
-							</Nav>
+						<Nav id='inflight'>
+							<NavText> Inflight </NavText>
 						</Nav>
-						<Nav id='products'>
-							<NavText>  Products </NavText>
+						<Nav id='statistics'>
+							<NavText>  Statistics </NavText>
 						</Nav>
 					</SideNav>
 				</div>
 				<div style={{padding: 20}}>
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
-					<Route path="/sales" render={this.renderSales}/>
-					<Route path="/products" render={this.renderProducts}/>
+					<Route path="/sales" render={this.renderInflight}/>
+					<Route path="/products" render={this.renderStatistics}/>
 				</div>
 			</div>
 		</Router>

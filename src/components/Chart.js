@@ -44,18 +44,6 @@ class Chart extends Component{
 						options={{maintainAspectRatio: false}}
 					/>
 				</div>
-				<div style = {styles}>
-					<Bar
-						data={this.state.restoreChartData }
-						options={{maintainAspectRatio: false}}
-					/>
-				</div>
-				<div style = {styles}>
-					<Bar
-						data={this.state.mountChartData }
-						options={{maintainAspectRatio: false}}
-					/>
-				</div>
 			</div>
 			)
 	}
