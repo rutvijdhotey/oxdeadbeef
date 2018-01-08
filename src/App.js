@@ -12,21 +12,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      backupChartData: {},
-      restoreChartData: {},
-      mountChartData: {}
+      backupVmChartData: {},
+      restoreVmChartData: {},
+      backupVmdkChartData: {},
+      restoreVmdkChartData: {},
+      performanceChartData: {}
     }
   }
   
 
   componentWillMount() {
-    this.getBackupChartData();
-    this.getMountChartData();
-    this.getRestoreChartData();
+    this.getBackupVmChartData();
+    this.getBackupVmdkChartData();
+    this.getRestoreVmChartData();
+    this.getRestoreVmdkChartData();
+    this.getPerformanceChartData();
   }
   
    renderDashboard = () => {
-        return <Dashboard backupChartData = {this.state.backupChartData} mountChartData = {this.state.mountChartData} restoreChartData = {this.state.restoreChartData}/>;
+        return <Dashboard performanceChartData = {this.state.performanceChartData} backupVmChartData = {this.state.backupVmChartData} restoreVmChartData = {this.state.restoreVmChartData} restoreVmdkChartData = {this.state.restoreVmdkChartData} backupVmdkChartData = {this.state.backupVmdkChartData}/>;
     }
 
     renderInflight = () => {
@@ -38,13 +42,13 @@ class App extends Component {
     }
 
 //Setting the state of the backups whenever we need the top 10. We can use this function when we want the Inflight Details as well.
-  getBackupChartData() {
+  getBackupVmChartData() {
     //Make the AJAX CALL HERE
     this.setState({
-      backupChartData: {
+      backupVmChartData: {
         labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
         datasets: [ {
-            label: "Backups",
+            label: "backupVmChartData",
             data: [
               100,200,321,153,299,198,200,232,212,311
             ],
@@ -56,13 +60,49 @@ class App extends Component {
     });
   }
 
-  getMountChartData() {
+  getPerformanceChartData() {
     //Make the AJAX CALL HERE
     this.setState({
-      mountChartData: {
+      performanceChartData: {
+        labels : ["b1","b2","b3","b4","b5","b6","b10"],
+        datasets: [ {fillColor: "rgba(220,220,220,0.2)",
+           strokeColor: "rgba(220,220,220,1)",
+           data: [65, 59, 80, 81, 56, 55, 40]
+          },
+          {fillColor: "rgba(151,187,205,0.2)",
+           strokeColor: "rgba(151,187,205,1)",
+           data: [28, 48, 40, 19, 86, 27, 90]
+          }
+        ]
+      }
+    });
+  }
+
+  getBackupVmdkChartData() {
+    //Make the AJAX CALL HERE
+    this.setState({
+      backupVmdkChartData: {
         labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
         datasets: [ {
-            label: "Mounts",
+            label: "backupVmdkChartData",
+            data: [
+              100,200,321,153,299,198,200,232,212,311
+            ],
+            backgroundColor:
+              'rgba(153, 102, 255, 0.6)'
+          } 
+        ]
+      }
+    });
+  }
+
+  getRestoreVmChartData() {
+    //Make the AJAX CALL HERE
+    this.setState({
+      restoreVmChartData: {
+        labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
+        datasets: [ {
+            label: "restoreVmChartData",
             data: [
               100,200,321,153,299,198,200,232,212,311
             ],
@@ -73,13 +113,13 @@ class App extends Component {
     });
   }
 
-  getRestoreChartData() {
+  getRestoreVmdkChartData() {
     //Make the AJAX CALL HERE
     this.setState({
-      restoreChartData: {
+      restoreVmdkChartData: {
         labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
         datasets: [ {
-            label: "Restores",
+            label: "restoreVmdkChartData",
             data: [
               100,200,321,153,299,198,200,232,212,311
             ],

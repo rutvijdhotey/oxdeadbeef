@@ -5,42 +5,54 @@ class Chart extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			backupChartData: props.backupChartData,
-			restoreChartData: props.restoreChartData,
-			mountChartData: props.mountChartData
+			backupVmChartData: props.backupVmChartData,
+			restoreVmChartData: props.restoreVmChartData,
+			backupVmdkChartData: props.backupVmdkChartData,
+			restoreVmdkChartData: props.restoreVmdkChartData,
+			performanceChartData: props.performanceChartData
 		}
 	}
 
 	
 
 	render() {
-		var styles = {
-		width: '33%',
-		float: 'right'
-	};
+		var stylesBarCharts = {
+			width: '50%',
+			float: 'right'
+		};
+		var stylesLineCharts = {
+			width: '90%',
+			margin: '0 auto'
+		};
 		return (
 			<div className = "barCharts">
-				<div style = {styles}>
+				<div style = {stylesLineCharts}>
+				<Line
+						data={this.state.performanceChartData }
+						options={{maintainAspectRatio: false}}
+					/>
+				</div>
+				<div style = {stylesBarCharts}>
 				<Bar
-						data={this.state.backupChartData }
+						data={this.state.backupVmChartData }
 						options={{maintainAspectRatio: false}}
 					/>
 				</div>
-				<div style = {styles}>
+				<div style = {stylesBarCharts}>
 					<Bar
-						data={this.state.restoreChartData }
+						data={this.state.restoreVmChartData }
 						options={{maintainAspectRatio: false}}
 					/>
 				</div>
-				<div style = {styles}>
+				<div style = {stylesBarCharts}>
 					<Bar
-						data={this.state.mountChartData }
+						data={this.state.backupVmdkChartData }
 						options={{maintainAspectRatio: false}}
 					/>
 				</div>
-				<div style = {styles}>
+				<div style = {stylesBarCharts}>
 				<Bar
-						data={this.state.backupChartData }
+						data={this.state.restoreVmdkChartData }
 						options={{maintainAspectRatio: false}}
 					/>
 				</div>
