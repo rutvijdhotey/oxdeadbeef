@@ -169,7 +169,9 @@ class App extends Component {
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
 					<Route path="/sales" render={this.renderInflight}/>
 					<Route path="/products" render={this.renderStatistics}/>
-					<Route path="/chartDetails" render={this.renderChartDetails}/>
+					<Route path="/chartDetails" render={(props) => (
+					  <ChartDetails {...props} />
+					)}/>
 				</div>
 			</div>
 		</Router>

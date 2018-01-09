@@ -13,12 +13,73 @@ class Chart extends Component{
 			performanceChartData: props.performanceChartData
 		}
 		
-		this.handleChartClick = this.handleChartClick.bind(this);
+		this.handleBackupVMChartClick = this.handleBackupVMChartClick.bind(this);
+		this.handleBackupVMDKChartClick = this.handleBackupVMDKChartClick.bind(this);
+		this.handleRestoreVMChartClick = this.handleRestoreVMChartClick.bind(this);
+		this.handleRestoreVMDKChartClick = this.handleRestoreVMDKChartClick.bind(this);
 		
 	}
 	
-	handleChartClick(e){
-		this.props.history.push('/chartDetails');
+	handleBackupVMChartClick(e){
+		this.props.history.push({
+			pathname: '/chartDetails',
+			state: {type: "BackupVM"}
+			});
+	}
+	
+	handleBackupVMDKChartClick(e){
+		this.props.history.push({
+			pathname: '/chartDetails',
+			state: {type: "BackupVMDK"}
+			});
+	}
+	
+	handleRestoreVMChartClick(e){
+		this.props.history.push({
+			pathname: '/chartDetails',
+			state: {type: "RestoreVM"}
+			});
+	}
+	handleRestoreVMDKChartClick(e){
+		this.props.history.push({
+			pathname: '/chartDetails',
+			state: {type: "RestoreVMDK"}
+			});
+	}
+	
+	
+	getBarGraphOptions(type){
+		var optionsBarGraph = {
+			maintainAspectRatio: true,
+			scales: {
+		    xAxes: [{
+		                gridLines: {
+		                    display:false
+		                }
+		            }],
+		    yAxes: [{
+		                gridLines: {
+		                    display:false
+		                }   
+		            }]
+		    }
+		}
+		switch(type){
+			case "BackupVM":
+				optionsBarGraph["onClick"] = this.handleBackupVMChartClick;
+				break;
+			case "BackupVMDK":
+				optionsBarGraph["onClick"] = this.handleBackupVMDKChartClick;
+			case "RestoreVM":
+				optionsBarGraph["onClick"] = this.handleRestoreVMChartClick;
+			case "RestoreVMDK":
+				optionsBarGraph["onClick"] = this.handleRestoreVMDKChartClick; 
+			default:
+				break;
+				
+		}
+		
+		return optionsBarGraph;
 	}
 	
 	
@@ -36,23 +97,6 @@ class Chart extends Component{
 			bottom: '20px'
 		};
 		
-		//options Bar Graph
-		var optionsBarGraph = {
-			maintainAspectRatio: true,
-			scales: {
-		    xAxes: [{
-		                gridLines: {
-		                    display:false
-		                }
-		            }],
-		    yAxes: [{
-		                gridLines: {
-		                    display:false
-		                }   
-		            }]
-		    },
-			onClick: this.handleChartClick
-		}
 
 		//Options Line Graph
 		var optionsLineGraph = {
@@ -71,25 +115,25 @@ class Chart extends Component{
 				<div style = {stylesBarCharts}>
 				<Bar
 						data={this.state.backupVmChartData }
-						options={optionsBarGraph}
+						options={this.getBarGraphOptions("BackupVM")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
 					<Bar
 						data={this.state.restoreVmChartData }
-						options={optionsBarGraph}
+						options={this.getBarGraphOptions("RestoreVM")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
 					<Bar
 						data={this.state.backupVmdkChartData }
-						options={optionsBarGraph}
+						options={this.getBarGraphOptions("BackupVMDK")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
 				<Bar
 						data={this.state.restoreVmdkChartData }
-						options={optionsBarGraph}
+						options={this.getBarGraphOptions("RestoreVMDK")}
 					/>
 				</div>
 			</div>
