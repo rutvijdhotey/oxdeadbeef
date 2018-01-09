@@ -8,6 +8,7 @@ import ChartDetails from './ChartDetails';
 import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
 
 const SideNav = withRR4();
   
@@ -19,7 +20,9 @@ class App extends Component {
       restoreVmChartData: {},
       backupVmdkChartData: {},
       restoreVmdkChartData: {},
-      performanceChartData: {}
+      performanceChartData: {},
+      inflightInformation: {},
+      resourceUtilization: {}
     }
   }
   
@@ -30,7 +33,9 @@ class App extends Component {
     this.getRestoreVmChartData();
     this.getRestoreVmdkChartData();
     this.getPerformanceChartData();
-	this.getRGBackupChartData();
+	  this.getRGBackupChartData();
+    this.getInflightInformation();
+    this.getResourceUtilization();
   }
   
    renderDashboard = () => {
@@ -39,20 +44,51 @@ class App extends Component {
     }
 
     renderInflight = () => {
-        return <Inflight/>;
+        return <Inflight inflightInformation = {this.state.inflightInformation} />;
     }
 
     renderMemoryStats = () => {
-        return <MemoryStats performanceChartData = {this.state.performanceChartData}/>;
+        return <MemoryStats resourceUtilization = {this.state.resourceUtilization}/>;
     }
 
     renderStatistics = () => {
         return <div>Statistics</div>;
     }
+
+    renderApiDocs = () => {
+        return <div>localhost:8000/swagger</div>;
+    }
+
+    renderAbout = () => {
+        return <div>About Info</div>;
+    }
 	
 	renderChartDetails = () => {
         return <ChartDetails/>;
     }
+
+getResourceUtilization() {
+    //Make the AJAX CALL HERE
+    this.setState({
+      resourceUtilization: {
+        labels : ["b1","b2","b3","b4","b5","b6","b10"],
+        datasets: [
+          // Add the data for the Performance here
+          {label: "restoreVmdkChartData",
+            data: [65, 59, 80, 81, 56, 55, 40,12,32,43,111,212,213,215,215,213,215],
+            fill: true,
+            borderColor: 'red'
+          },
+          {label: "restoreVmChartData",
+            data: [28, 48, 40, 19, 86, 27, 211,211,312,313,315,315,313,315],
+            fill: true,
+            borderColor: 'green'
+          }
+        ]
+      }
+    });
+  }
+
 
 //Setting the state of the backups whenever we need the top 10. We can use this function when we want the Inflight Details as well.
   getBackupVmChartData() {
@@ -80,19 +116,23 @@ class App extends Component {
         labels : ["b1","b2","b3","b4","b5","b6","b10"],
         datasets: [
           // Add the data for the Performance here
-          {data: [65, 59, 80, 81, 56, 55, 40],
+          {label: "restoreVmdkChartData",
+            data: [65, 59, 80, 81, 56, 55, 40],
             fill: false,
             borderColor: 'red'
           },
-          {data: [28, 48, 40, 19, 86, 27, 90],
+          {label: "restoreVmChartData",
+            data: [28, 48, 40, 19, 86, 27, 90],
             fill: false,
             borderColor: 'green'
           },
-          {data: [11, 4, 43, 9, 6, 2, 92],
+          {label: "backupVmdkChartData",
+            data: [11, 4, 43, 9, 6, 2, 92],
             fill: false,
             borderColor: 'brown'
           },
-          {data: [8, 12, 4, 9, 34, 7, 9],
+          {label: "backupVmChartData",
+            data: [8, 12, 4, 9, 34, 7, 9],
             fill: false,
             borderColor: 'blue'
           }
@@ -297,51 +337,84 @@ class App extends Component {
 	  });
   }
   
-  
+  getInflightInformation() {
+    //Make the AJAX CALL HERE
+    this.setState({
+      inflightInformation: {
+          vmwareAPICalls: 44,
+          ontapZAPICalls: 12,
+          scServerAPICalls: 12,
+          scvGuiAPICalls: 23,
+          scvServerCalls: 14
+      }
+    });
+  }
 
   render() {
          var dashboardStyle = {
-            background: '#bdc3c7',  /* fallback for old browsers */
-background: '-webkit-linear-gradient(to right, #2c3e50, #bdc3c7)',  /* Chrome 10-25, Safari 5.1-6 */
-background: 'linear-gradient(to right, #2c3e50, #bdc3c7)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            
+width : '80%',
+float: 'right',
+background: '#304352',  /* fallback for old browsers */
+background: '-webkit-linear-gradient(to right, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
+background: 'linear-gradient(to right, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+          };
+
+        var dashboardPanelStyle = {
+width : '20%',
+background: '#304352',  /* fallback for old browsers */
+background: '-webkit-linear-gradient(to left, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
+background: 'linear-gradient(to left, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+marginRight: '0px'
          };
 
-var dashboardMainStyle = {
-            background: '#283c86',  /* fallback for old browsers */
-background:'-webkit-linear-gradient(to right, #45a247, #283c86)',  /* Chrome 10-25, Safari 5.1-6 */
-background: 'linear-gradient(to right, #45a247, #283c86)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+         var dashboardCommon = {
 
          };
     return (
 		<Router>
-			<div style={{display: 'flex', flexDirection: 'row' }}>
-				<div style={dashboardMainStyle}>
-					<SideNav default='dashboard' highlightBgColor='blue' highlightColor='white'>
-						<Nav id='dashboard'>
-							<NavText>  Dashboard </NavText>
-						</Nav>
-						<Nav id='inflight'>
-							<NavText> Inflight </NavText>
-						</Nav>
-						<Nav id='statistics'>
-							<NavText>  Statistics </NavText>
-						</Nav>
-            <Nav id='memoryStats'>
-              <NavText>  Memory Stats </NavText>
-            </Nav>
-					</SideNav>
-				</div>
-				<div style={dashboardStyle}>
-					<Route exact path="/dashboard" render={this.renderDashboard}/>
-					<Route path="/inflight" render={this.renderInflight}/>
-          <Route path="/memoryStats" render={this.renderMemoryStats}/>
-					<Route path="/products" render={this.renderStatistics}/>
-					<Route path="/chartDetails" render={(props) => (
-					  <ChartDetails rgBackupChartData = {this.state.rgBackupChartData} {...props} />
-					)}/>
-				</div>
-			</div>
+      <Container>
+        <Row>
+          <Col sm="2" >
+            <div style={dashboardPanelStyle}>
+              <SideNav  default='dashboard' highlightBgColor='black' highlightColor='white'>
+                <Nav id='dashboard'>
+                  <NavText>  Dashboard </NavText>
+                </Nav>
+                <Nav id='inflight'>
+                  <NavText> In-flight </NavText>
+                </Nav>
+                <Nav id='statistics'>
+                  <NavText>  Statistics </NavText>
+                </Nav>
+                <Nav id='memoryStats'>
+                  <NavText>  Resource Utilization </NavText>
+                </Nav>
+                <Nav id='apiDocs'>
+                  <NavText>  Api Docs </NavText>
+                </Nav>
+                <Nav id='about'>
+                  <NavText>  About </NavText>
+                </Nav>
+              </SideNav>
+           </div>
+          </Col>
+          <Col sm="10">
+            <div style={dashboardStyle}>
+              <Route exact path="/dashboard" render={this.renderDashboard}/>
+              <Route path="/inflight" render={this.renderInflight}/>
+              <Route path="/memoryStats" render={this.renderMemoryStats}/>
+              <Route path="/statistics" render={this.renderStatistics}/>
+              <Route path="/apiDocs" render={this.renderApiDocs}/>
+              <Route path="/about" render={this.renderAbout}/>
+              <Route path="/chartDetails" render={(props) => (
+                <ChartDetails style= {{width: '100%'}} rgBackupChartData = {this.state.rgBackupChartData} {...props} />
+              )}/>
+            </div>
+          </Col>
+        </Row>
+      </Container>
 		</Router>
     );
   }
