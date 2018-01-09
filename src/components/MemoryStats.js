@@ -7,7 +7,7 @@ class MemoryStats extends Component {
 		super(props);
 		this.state = {
 			//Enter the memory performance stats
-			performanceChartData: props.performanceChartData
+			resourceUtilization: props.resourceUtilization
 		}
 	}
 	
@@ -29,19 +29,19 @@ class MemoryStats extends Component {
 			<div className = "memoryCharts">
 				<div style = {stylesLineCharts}>
 				<Line
-						data={this.state.performanceChartData }
+						data={this.state.resourceUtilization }
 						options={optionsLineGraph}
 					/>
 				</div>
 				<div style = {stylesLineCharts}>
 				<Line
-						data={this.state.performanceChartData }
+						data={this.state.resourceUtilization }
 						options={optionsLineGraph}
 					/>
 				</div>
 				<div style = {stylesLineCharts}>
 				<Line
-						data={this.state.performanceChartData }
+						data={this.state.resourceUtilization }
 						options={optionsLineGraph}
 					/>
 				</div>
@@ -52,4 +52,4 @@ class MemoryStats extends Component {
 
 
 
-export default withRouter(MemoryStats);
+export default MemoryStats;
