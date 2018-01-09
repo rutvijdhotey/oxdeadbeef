@@ -25,8 +25,9 @@ class Chart extends Component{
 
 	render() {
 		var stylesBarCharts = {
-			width: '50%',
+			width: '45%',
 			height: '30%',
+			paddingRight: '5%',
 			float: 'right'
 		};
 		var stylesLineCharts = {

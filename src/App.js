@@ -151,12 +151,23 @@ class App extends Component {
   
 
   render() {
-         
+         var dashboardStyle = {
+            background: '#bdc3c7',  /* fallback for old browsers */
+background: '-webkit-linear-gradient(to right, #2c3e50, #bdc3c7)',  /* Chrome 10-25, Safari 5.1-6 */
+background: 'linear-gradient(to right, #2c3e50, #bdc3c7)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+         };
+
+var dashboardMainStyle = {
+            background: '#283c86',  /* fallback for old browsers */
+background:'-webkit-linear-gradient(to right, #45a247, #283c86)',  /* Chrome 10-25, Safari 5.1-6 */
+background: 'linear-gradient(to right, #45a247, #283c86)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+         };
     return (
 		<Router>
-			<div style={{display: 'flex', flexDirection: 'row', backgroundColor: 'grey'}}>
-				<div style={{width: 550, backgroundColor: 'grey'}}>
+			<div style={{display: 'flex', flexDirection: 'row' }}>
+				<div style={dashboardMainStyle}>
 					<SideNav default='dashboard' highlightBgColor='blue' highlightColor='white'>
 						<Nav id='dashboard'>
 							<NavText>  Dashboard </NavText>
@@ -169,7 +180,7 @@ class App extends Component {
 						</Nav>
 					</SideNav>
 				</div>
-				<div style={{padding: 20, backgroundColor: 'grey'}}>
+				<div style={dashboardStyle}>
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
 					<Route path="/inflight" render={this.renderInflight}/>
 					<Route path="/products" render={this.renderStatistics}/>
