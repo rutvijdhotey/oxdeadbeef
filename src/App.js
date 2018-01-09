@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Dashboard from './Dashboard'
+import ChartDetails from './ChartDetails'
 import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -35,6 +36,10 @@ class App extends Component {
 
     renderProducts = () => {
         return <div>Products</div>;
+    }
+	
+	renderChartDetails = () => {
+        return <ChartDetails/>;
     }
 
 //Setting the state of the backups whenever we need the top 10. We can use this function when we want the Inflight Details as well.
@@ -117,6 +122,7 @@ class App extends Component {
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
 					<Route path="/sales" render={this.renderSales}/>
 					<Route path="/products" render={this.renderProducts}/>
+					<Route path="/chartDetails" render={this.renderChartDetails}/>
 				</div>
 			</div>
 		</Router>

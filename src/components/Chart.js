@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar, Line, Pie} from 'react-chartjs-2'
+import { withRouter } from 'react-router-dom'
 
 class Chart extends Component{
 	constructor(props) {
@@ -9,8 +10,15 @@ class Chart extends Component{
 			restoreChartData: props.restoreChartData,
 			mountChartData: props.mountChartData
 		}
+		
+		this.handleChartClick = this.handleChartClick.bind(this);
+		
 	}
-
+	
+	handleChartClick(e){
+		this.props.history.push('/chartDetails');
+	}
+	
 	
 
 	render() {
@@ -22,8 +30,9 @@ class Chart extends Component{
 			<div className = "barCharts">
 				<div style = {styles}>
 				<Bar
+						ref="backupChart"
 						data={this.state.backupChartData }
-						options={{maintainAspectRatio: false}}
+						options={{maintainAspectRatio: false, onClick: this.handleChartClick}}
 					/>
 				</div>
 				<div style = {styles}>
@@ -61,4 +70,4 @@ class Chart extends Component{
 	}
 }
 
-export default Chart;
+export default withRouter(Chart);
