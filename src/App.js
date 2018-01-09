@@ -30,6 +30,7 @@ class App extends Component {
   }
   
    renderDashboard = () => {
+
         return <Dashboard performanceChartData = {this.state.performanceChartData} backupVmChartData = {this.state.backupVmChartData} restoreVmChartData = {this.state.restoreVmChartData} restoreVmdkChartData = {this.state.restoreVmdkChartData} backupVmdkChartData = {this.state.backupVmdkChartData}/>;
     }
 
@@ -144,10 +145,12 @@ class App extends Component {
   
 
   render() {
+         
+
     return (
 		<Router>
 			<div style={{display: 'flex', flexDirection: 'row'}}>
-				<div style={{width: 220}}>
+				<div style={{width: 220, backgroundColor: 'grey'}}>
 					<SideNav default='dashboard' highlightBgColor='blue' highlightColor='white'>
 						<Nav id='dashboard'>
 							<NavText>  Dashboard </NavText>
@@ -160,7 +163,7 @@ class App extends Component {
 						</Nav>
 					</SideNav>
 				</div>
-				<div style={{padding: 20}}>
+				<div style={{padding: 20, backgroundColor: 'grey'}}>
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
 					<Route path="/sales" render={this.renderInflight}/>
 					<Route path="/products" render={this.renderStatistics}/>
