@@ -22,7 +22,8 @@ class MemoryStats extends Component {
 		//Options Line Graph
 		var optionsLineGraph = {
 			maintainAspectRatio: false,
-			showLines: true
+			showLines: true,
+			responsive: true
 		}
 
 		return (
