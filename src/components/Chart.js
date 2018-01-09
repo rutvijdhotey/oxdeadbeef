@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Bar, Line, Pie} from 'react-chartjs-2'
+import { withRouter } from 'react-router-dom'
 
 class Chart extends Component{
 	constructor(props) {
@@ -11,8 +12,15 @@ class Chart extends Component{
 			restoreVmdkChartData: props.restoreVmdkChartData,
 			performanceChartData: props.performanceChartData
 		}
+		
+		this.handleChartClick = this.handleChartClick.bind(this);
+		
 	}
-
+	
+	handleChartClick(e){
+		this.props.history.push('/chartDetails');
+	}
+	
 	
 
 	render() {
@@ -42,7 +50,8 @@ class Chart extends Component{
 		                    display:false
 		                }   
 		            }]
-		    }
+		    },
+			onClick: this.handleChartClick
 		}
 
 		//Options Line Graph
@@ -88,4 +97,4 @@ class Chart extends Component{
 	}
 }
 
-export default Chart;
+export default withRouter(Chart);
