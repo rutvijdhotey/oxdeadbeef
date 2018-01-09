@@ -98,7 +98,9 @@ class Chart extends Component{
 			bottom: '20px'
 		};
 		
-
+		var headerStyles = {
+			textAlign: 'center'
+		}
 		//Options Line Graph
 		var optionsLineGraph = {
 			maintainAspectRatio: true,
@@ -108,31 +110,36 @@ class Chart extends Component{
 		return (
 			<div className = "barCharts">
 				<div style = {stylesLineCharts}>
+				<h3 style = {headerStyles}> Time Series Chart</h3>
 				<Line
 						data={this.state.performanceChartData }
 						options={optionsLineGraph}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
-				<Bar
+					<h3 style = {headerStyles}> Top 5 Vm Backups vs Time </h3>
+					<Bar
 						data={this.state.backupVmChartData }
 						options={this.getBarGraphOptions("BackupVM")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
+					<h3 style = {headerStyles}> Top 5 Vm Restores vs Time</h3>
 					<Bar
 						data={this.state.restoreVmChartData }
 						options={this.getBarGraphOptions("RestoreVM")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
+					<h3 style = {headerStyles}> Top 5 Vmdk Backups vs Time </h3>
 					<Bar
 						data={this.state.backupVmdkChartData }
 						options={this.getBarGraphOptions("BackupVMDK")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
-				<Bar
+					<h3 style = {headerStyles}> Top 5 Vmdk Restores vs Time </h3>
+					<Bar
 						data={this.state.restoreVmdkChartData }
 						options={this.getBarGraphOptions("RestoreVMDK")}
 					/>

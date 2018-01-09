@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
 import { withRouter } from 'react-router-dom';
+import Img from 'react-image'
+import heapUsage from '../images/HeapUsage.png'
+import cpuUsage from '../images/CPUUsage.png'
+import classUsage from '../images/ClassUsage.png'
+import threadUsage from '../images/ThreadUsage.png'
 
 class MemoryStats extends Component {
 	constructor(props) {
@@ -12,7 +17,7 @@ class MemoryStats extends Component {
 	}
 	
 	render() {
-
+		
 		var stylesLineCharts = {
 			width: '90%',
 			margin: '0 auto',
@@ -26,25 +31,27 @@ class MemoryStats extends Component {
 			responsive: true
 		}
 
+		var headerStyles = {
+			textAlign: 'center'
+		}
+
 		return (
 			<div className = "memoryCharts">
-				<div style = {stylesLineCharts}>
-				<Line
-						data={this.state.resourceUtilization }
-						options={optionsLineGraph}
-					/>
+				<div>
+					<h3 style = {headerStyles}> Heap Usage </h3>
+					<img style = {stylesLineCharts} src={heapUsage} alt="heapUsage" />
 				</div>
-				<div style = {stylesLineCharts}>
-				<Line
-						data={this.state.resourceUtilization }
-						options={optionsLineGraph}
-					/>
+				<div>
+					<h3 style = {headerStyles}> CPU Usage </h3>
+					<img style = {stylesLineCharts} src={cpuUsage} alt="cpuUsage" />
 				</div>
-				<div style = {stylesLineCharts}>
-				<Line
-						data={this.state.resourceUtilization }
-						options={optionsLineGraph}
-					/>
+				<div>
+					<h3 style = {headerStyles}> Thread Usage </h3>
+					<img style = {stylesLineCharts} src={threadUsage} alt="threadUsage" />
+				</div>
+				<div>
+					<h3 style = {headerStyles}> Class Usage </h3>
+					<img style = {stylesLineCharts} src={classUsage} alt="classUsage" />
 				</div>
 			</div>
 			)

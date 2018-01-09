@@ -415,19 +415,21 @@ float: 'right',
 background: '#304352',  /* fallback for old browsers */
 background: '-webkit-linear-gradient(to right, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
 background: 'linear-gradient(to right, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+paddingLeft: '21px',
+paddingTop: '10px'
           };
 
         var dashboardPanelStyle = {
-width : '20%',
+width : '18.5%',
 background: '#304352',  /* fallback for old browsers */
 background: '-webkit-linear-gradient(to left, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
 background: 'linear-gradient(to left, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 marginRight: '0px',
     margin: '0px',
     clear: 'both',
-    height: '100%',
-    position: 'absolute'
+    height: '150%',
+    position: 'absolute',
+    border: '2px solid black'
          };
 
          var dashboardCommon = {
