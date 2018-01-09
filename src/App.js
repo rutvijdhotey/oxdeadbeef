@@ -366,7 +366,11 @@ width : '20%',
 background: '#304352',  /* fallback for old browsers */
 background: '-webkit-linear-gradient(to left, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
 background: 'linear-gradient(to left, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-marginRight: '0px'
+marginRight: '0px',
+    margin: '0px',
+    clear: 'both',
+    height: '100%',
+    position: 'absolute'
          };
 
          var dashboardCommon = {
