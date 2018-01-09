@@ -98,23 +98,7 @@ getResourceUtilization() {
 
 
 //Setting the state of the backups whenever we need the top 10. We can use this function when we want the Inflight Details as well.
-  getBackupVmChartData() {
-    //Make the AJAX CALL HERE
-    this.setState({
-      backupVmChartData: {
-        labels : ["b1","b2","b3","b4","b5"],
-        datasets: [ {
-            label: "backupVmChartData",
-            data: [
-              130,200,321,153,299
-            ],
-            backgroundColor:
-              'rgba(153, 102, 255, 0.6)'
-          } 
-        ]
-      }
-    });
-  }
+  
 
   getPerformanceChartData() {
     //Make the AJAX CALL HERE
@@ -201,7 +185,23 @@ getResourceUtilization() {
 	  
     });
   }
-
+  
+getBackupVmChartData() {
+    //Make the AJAX CALL HERE
+    this.setState({
+      backupVmChartData: {
+        labels : ["b1","b2","b3","b4","b5"],
+        datasets: [ {
+            label: "backupVmChartData",
+            data: [
+              130,200,321,153,299
+            ],
+            backgroundColor:'#66cc66'
+          } 
+        ]
+      }
+    });
+  }
   getBackupVmdkChartData() {
     //Make the AJAX CALL HERE
     this.setState({
@@ -212,8 +212,7 @@ getResourceUtilization() {
             data: [
               130,200,321,153,299
             ],
-            backgroundColor:
-              'rgba(153, 102, 255, 0.6)'
+            backgroundColor:'#66cc66'
           } 
         ]
       }
@@ -230,7 +229,7 @@ getResourceUtilization() {
             data: [
               130,200,321,153,299
             ],
-            backgroundColor:'rgba(255, 99, 132, 0.6)'
+            backgroundColor:'#66b3ff'
           } 
         ]
       }
@@ -247,7 +246,7 @@ getResourceUtilization() {
             data: [
               130,200,321,153,299
             ],
-            backgroundColor:'rgba(255, 206, 86, 0.6)'
+            backgroundColor:'#66b3ff'
             
           } 
         ]
