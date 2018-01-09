@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2'
-import { withRouter } from 'react-router-dom'
+import {Bar, Line, Pie} from 'react-chartjs-2';
+import { withRouter } from 'react-router-dom';
 
 class Chart extends Component{
 	constructor(props) {
@@ -86,8 +86,9 @@ class Chart extends Component{
 
 	render() {
 		var stylesBarCharts = {
-			width: '50%',
+			width: '45%',
 			height: '30%',
+			paddingRight: '5%',
 			float: 'right'
 		};
 		var stylesLineCharts = {
