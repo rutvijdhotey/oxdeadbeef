@@ -64,8 +64,9 @@ class App extends Component {
 
     renderAbout = () => {
         return <div>
-				<div>SC Version 4.0</div>
-				<div>SCV Version 4.0</div>
+				<h3>Einstein Version 1.0  &copy;</h3>
+				<h4>SnapCenter Version : 4.0</h4>
+				<h4>SnapCenter Plug-in for VMWare vSphere Version : 4.0</h4>
 				</div>;
     }
 	
