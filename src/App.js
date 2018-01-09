@@ -59,11 +59,14 @@ class App extends Component {
     }
 
     renderApiDocs = () => {
-        return <div>localhost:8000/swagger</div>;
+        return <a href="localhost:8000/swagger">Swagger Link</a>;
     }
 
     renderAbout = () => {
-        return <div>About Info</div>;
+        return <div>
+				<div>SC Version 4.0</div>
+				<div>SCV Version 4.0</div>
+				</div>;
     }
 	
 	renderChartDetails = () => {
@@ -397,11 +400,25 @@ getBackupVmChartData() {
     //Make the AJAX CALL HERE
     this.setState({
       inflightInformation: {
-          vmwareAPICalls: 44,
-          ontapZAPICalls: 12,
-          scServerAPICalls: 12,
-          scvGuiAPICalls: 23,
-          scvServerCalls: 14
+          vmWareAPICalls: {
+			  "get-VirtualDiskById()": 0,
+			  "get-VirtualMachineById()":0,
+			  "get-DatastoreByMoref()": 0,
+			  "createSnapshot()": 5,
+			  "deleteSnapshot()": 0
+		  },
+		  scServerAPICalls: {
+			  "createProtectionGroup()": 0,
+			  "getProetctionGroupByNameOrId()": 1,
+			  "getProtectionGroupByNameOrMoref()": 0,
+			  "addPolicy()": 0,
+			  "getPolicy()": 0,
+			  "createBackup()": 10,
+			  "getBackupDetails()": 0
+		  },
+		  ontapZAPICalls: {
+			  "createSnapshot()": 10
+		  }
       }
     });
   }
