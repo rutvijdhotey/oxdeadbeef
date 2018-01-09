@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Dashboard from './Dashboard';
 import Inflight from './components/Inflight';
+import MemoryStats from './components/MemoryStats';
 import ChartDetails from './ChartDetails';
 import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
@@ -39,6 +40,10 @@ class App extends Component {
 
     renderInflight = () => {
         return <Inflight/>;
+    }
+
+    renderMemoryStats = () => {
+        return <MemoryStats performanceChartData = {this.state.performanceChartData}/>;
     }
 
     renderStatistics = () => {
@@ -322,11 +327,15 @@ background: 'linear-gradient(to right, #45a247, #283c86)' /* W3C, IE 10+/ Edge, 
 						<Nav id='statistics'>
 							<NavText>  Statistics </NavText>
 						</Nav>
+            <Nav id='memoryStats'>
+              <NavText>  Memory Stats </NavText>
+            </Nav>
 					</SideNav>
 				</div>
 				<div style={dashboardStyle}>
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
 					<Route path="/inflight" render={this.renderInflight}/>
+          <Route path="/memoryStats" render={this.renderMemoryStats}/>
 					<Route path="/products" render={this.renderStatistics}/>
 					<Route path="/chartDetails" render={(props) => (
 					  <ChartDetails rgBackupChartData = {this.state.rgBackupChartData} {...props} />
