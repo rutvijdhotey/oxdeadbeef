@@ -13,29 +13,33 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      backupChartData: {},
-      restoreChartData: {},
-      mountChartData: {}
+      backupVmChartData: {},
+      restoreVmChartData: {},
+      backupVmdkChartData: {},
+      restoreVmdkChartData: {},
+      performanceChartData: {}
     }
   }
   
 
   componentWillMount() {
-    this.getBackupChartData();
-    this.getMountChartData();
-    this.getRestoreChartData();
+    this.getBackupVmChartData();
+    this.getBackupVmdkChartData();
+    this.getRestoreVmChartData();
+    this.getRestoreVmdkChartData();
+    this.getPerformanceChartData();
   }
   
    renderDashboard = () => {
-        return <Dashboard backupChartData = {this.state.backupChartData} mountChartData = {this.state.mountChartData} restoreChartData = {this.state.restoreChartData}/>;
+        return <Dashboard performanceChartData = {this.state.performanceChartData} backupVmChartData = {this.state.backupVmChartData} restoreVmChartData = {this.state.restoreVmChartData} restoreVmdkChartData = {this.state.restoreVmdkChartData} backupVmdkChartData = {this.state.backupVmdkChartData}/>;
     }
 
-    renderSales = () => {
-        return <div>Sales</div>;
+    renderInflight = () => {
+        return <div>Inflight Operations</div>;
     }
 
-    renderProducts = () => {
-        return <div>Products</div>;
+    renderStatistics = () => {
+        return <div>Statistics</div>;
     }
 	
 	renderChartDetails = () => {
@@ -43,13 +47,13 @@ class App extends Component {
     }
 
 //Setting the state of the backups whenever we need the top 10. We can use this function when we want the Inflight Details as well.
-  getBackupChartData() {
+  getBackupVmChartData() {
     //Make the AJAX CALL HERE
     this.setState({
-      backupChartData: {
+      backupVmChartData: {
         labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
         datasets: [ {
-            label: "Backups",
+            label: "backupVmChartData",
             data: [
               100,200,321,153,299,198,200,232,212,311
             ],
@@ -61,13 +65,59 @@ class App extends Component {
     });
   }
 
-  getMountChartData() {
+  getPerformanceChartData() {
     //Make the AJAX CALL HERE
     this.setState({
-      mountChartData: {
+      performanceChartData: {
+        labels : ["b1","b2","b3","b4","b5","b6","b10"],
+        datasets: [
+          // Add the data for the Performance here
+          {data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: 'red'
+          },
+          {data: [28, 48, 40, 19, 86, 27, 90],
+            fill: false,
+            borderColor: 'green'
+          },
+          {data: [11, 4, 43, 9, 6, 2, 92],
+            fill: false,
+            borderColor: 'brown'
+          },
+          {data: [8, 12, 4, 9, 34, 7, 9],
+            fill: false,
+            borderColor: 'blue'
+          }
+        ]
+      }
+    });
+  }
+
+  getBackupVmdkChartData() {
+    //Make the AJAX CALL HERE
+    this.setState({
+      backupVmdkChartData: {
         labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
         datasets: [ {
-            label: "Mounts",
+            label: "backupVmdkChartData",
+            data: [
+              100,200,321,153,299,198,200,232,212,311
+            ],
+            backgroundColor:
+              'rgba(153, 102, 255, 0.6)'
+          } 
+        ]
+      }
+    });
+  }
+
+  getRestoreVmChartData() {
+    //Make the AJAX CALL HERE
+    this.setState({
+      restoreVmChartData: {
+        labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
+        datasets: [ {
+            label: "restoreVmChartData",
             data: [
               100,200,321,153,299,198,200,232,212,311
             ],
@@ -78,13 +128,13 @@ class App extends Component {
     });
   }
 
-  getRestoreChartData() {
+  getRestoreVmdkChartData() {
     //Make the AJAX CALL HERE
     this.setState({
-      restoreChartData: {
+      restoreVmdkChartData: {
         labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
         datasets: [ {
-            label: "Restores",
+            label: "restoreVmdkChartData",
             data: [
               100,200,321,153,299,198,200,232,212,311
             ],
@@ -107,21 +157,18 @@ class App extends Component {
 						<Nav id='dashboard'>
 							<NavText>  Dashboard </NavText>
 						</Nav>
-						<Nav id='sales'>
-							<NavText> Sales </NavText>
-							<Nav id='list'>
-								<NavText> List Sales </NavText>
-							</Nav>
+						<Nav id='inflight'>
+							<NavText> Inflight </NavText>
 						</Nav>
-						<Nav id='products'>
-							<NavText>  Products </NavText>
+						<Nav id='statistics'>
+							<NavText>  Statistics </NavText>
 						</Nav>
 					</SideNav>
 				</div>
 				<div style={{padding: 20}}>
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
-					<Route path="/sales" render={this.renderSales}/>
-					<Route path="/products" render={this.renderProducts}/>
+					<Route path="/sales" render={this.renderInflight}/>
+					<Route path="/products" render={this.renderStatistics}/>
 					<Route path="/chartDetails" render={this.renderChartDetails}/>
 				</div>
 			</div>
