@@ -29,6 +29,7 @@ class App extends Component {
     this.getRestoreVmChartData();
     this.getRestoreVmdkChartData();
     this.getPerformanceChartData();
+	this.getRGBackupChartData();
   }
   
    renderDashboard = () => {
@@ -148,6 +149,149 @@ class App extends Component {
     });
   }
   
+  getRGBackupChartData() {
+	  this.setState({
+		  rgBackupChartData: {
+			  RG1: {
+				  DatastoreData: {
+					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  datasets: [ {
+						label: "top5DSData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  },
+				  
+				  VmData: {
+					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  datasets: [ {
+						label: "top5VMData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  }
+			  },
+			  RG2: {
+				  DatastoreData: {
+					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  datasets: [ {
+						label: "top5DSData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  },
+				  
+				  VmData: {
+					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  datasets: [ {
+						label: "top5VMData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  }
+			  },
+			  RG3: {
+				  DatastoreData: {
+					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  datasets: [ {
+						label: "top5DSData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  },
+				  
+				  VmData: {
+					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  datasets: [ {
+						label: "top5VMData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  }
+			  },
+			  RG4: {
+				  DatastoreData: {
+					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  datasets: [ {
+						label: "top5DSData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  },
+				  
+				  VmData: {
+					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  datasets: [ {
+						label: "top5VMData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  }
+			  },
+			  RG5: {
+				  DatastoreData: {
+					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  datasets: [ {
+						label: "top5DSData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  },
+				  
+				  VmData: {
+					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  datasets: [ {
+						label: "top5VMData",
+						data: [
+						  130,200,321,153,299
+						],
+						backgroundColor:
+						  'rgba(153, 102, 255, 0.6)'
+					    } 
+					  ]
+				  }
+			  }
+			  
+		  }
+	  });
+  }
+  
   
 
   render() {
@@ -185,7 +329,7 @@ background: 'linear-gradient(to right, #45a247, #283c86)' /* W3C, IE 10+/ Edge, 
 					<Route path="/inflight" render={this.renderInflight}/>
 					<Route path="/products" render={this.renderStatistics}/>
 					<Route path="/chartDetails" render={(props) => (
-					  <ChartDetails {...props} />
+					  <ChartDetails rgBackupChartData = {this.state.rgBackupChartData} {...props} />
 					)}/>
 				</div>
 			</div>
