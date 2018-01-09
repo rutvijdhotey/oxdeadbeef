@@ -50,18 +50,31 @@ class Chart extends Component{
 	
 	getBarGraphOptions(type){
 		var optionsBarGraph = {
+			legend: {
+				display: false
+			},
 			maintainAspectRatio: true,
 			scales: {
 		    xAxes: [{
-		                gridLines: {
-		                    display:false
+		    	scaleLabel: {
+			        display: true,
+			        labelString: 'Names'
+      				},
+		            gridLines: {
+		                    display:false,
+		                    color: 'white'
 		                }
 		            }],
 		    yAxes: [{
-		                gridLines: {
-		                    display:false
-		                }   
-		            }]
+		    	scaleLabel: {
+			        display: true,
+			        labelString: 'time (ms)'
+      				},
+		            gridLines: {
+		                display:false,
+		                color: 'white'
+		            }   
+	            }]
 		    }
 		}
 		switch(type){
@@ -99,12 +112,37 @@ class Chart extends Component{
 		};
 		
 		var headerStyles = {
-			textAlign: 'center'
+			textAlign: 'center',
+			color: 'white'
 		}
 		//Options Line Graph
 		var optionsLineGraph = {
 			maintainAspectRatio: true,
-			showLines: true
+			showLines: true,
+			scales: {
+    xAxes: [{
+      gridLines: {
+        display: true,
+        color: "white"
+      },
+      scaleLabel: {
+        display: true,
+        labelString: "Names",
+        fontColor: "white"
+      }
+    }],
+    yAxes: [{
+      gridLines: {
+        color: "white",
+        borderDash: [2, 5],
+      },
+      scaleLabel: {
+        display: true,
+        labelString: "Time (ms)",
+        fontColor: "white"
+      }
+    }]
+  }
 		}
 
 		return (
@@ -116,13 +154,7 @@ class Chart extends Component{
 						options={optionsLineGraph}
 					/>
 				</div>
-				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 Vm Backups vs Time </h3>
-					<Bar
-						data={this.state.backupVmChartData }
-						options={this.getBarGraphOptions("BackupVM")}
-					/>
-				</div>
+				
 				<div style = {stylesBarCharts}>
 					<h3 style = {headerStyles}> Top 5 Vm Restores vs Time</h3>
 					<Bar
@@ -131,17 +163,25 @@ class Chart extends Component{
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 Vmdk Backups vs Time </h3>
+					<h3 style = {headerStyles}> Top 5 Vm Backups vs Time </h3>
 					<Bar
-						data={this.state.backupVmdkChartData }
-						options={this.getBarGraphOptions("BackupVMDK")}
+						data={this.state.backupVmChartData }
+						options={this.getBarGraphOptions("BackupVM")}
 					/>
 				</div>
+				
 				<div style = {stylesBarCharts}>
 					<h3 style = {headerStyles}> Top 5 Vmdk Restores vs Time </h3>
 					<Bar
 						data={this.state.restoreVmdkChartData }
 						options={this.getBarGraphOptions("RestoreVMDK")}
+					/>
+				</div>
+				<div style = {stylesBarCharts}>
+					<h3 style = {headerStyles}> Top 5 Vmdk Backups vs Time </h3>
+					<Bar
+						data={this.state.backupVmdkChartData }
+						options={this.getBarGraphOptions("BackupVMDK")}
 					/>
 				</div>
 			</div>
