@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2'
-import { withRouter } from 'react-router-dom'
+import {Bar, Line, Pie} from 'react-chartjs-2';
+import { withRouter } from 'react-router-dom';
 
 class Chart extends Component{
 	constructor(props) {

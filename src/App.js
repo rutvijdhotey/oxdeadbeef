@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Dashboard from './Dashboard'
-import ChartDetails from './ChartDetails'
+import Dashboard from './Dashboard';
+import Inflight from './components/Inflight';
+import ChartDetails from './ChartDetails';
 import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -36,7 +37,7 @@ class App extends Component {
     }
 
     renderInflight = () => {
-        return <div>Inflight Operations</div>;
+        return <Inflight/>;
     }
 
     renderStatistics = () => {
@@ -52,11 +53,11 @@ class App extends Component {
     //Make the AJAX CALL HERE
     this.setState({
       backupVmChartData: {
-        labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
+        labels : ["b1","b2","b3","b4","b5"],
         datasets: [ {
             label: "backupVmChartData",
             data: [
-              100,200,321,153,299,198,200,232,212,311
+              130,200,321,153,299
             ],
             backgroundColor:
               'rgba(153, 102, 255, 0.6)'
@@ -98,11 +99,11 @@ class App extends Component {
     //Make the AJAX CALL HERE
     this.setState({
       backupVmdkChartData: {
-        labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
+        labels : ["b1","b2","b3","b4","b5",],
         datasets: [ {
             label: "backupVmdkChartData",
             data: [
-              100,200,321,153,299,198,200,232,212,311
+              130,200,321,153,299
             ],
             backgroundColor:
               'rgba(153, 102, 255, 0.6)'
@@ -116,11 +117,11 @@ class App extends Component {
     //Make the AJAX CALL HERE
     this.setState({
       restoreVmChartData: {
-        labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
+        labels : ["b1","b2","b3","b4","b5"],
         datasets: [ {
             label: "restoreVmChartData",
             data: [
-              100,200,321,153,299,198,200,232,212,311
+              130,200,321,153,299
             ],
             backgroundColor:'rgba(255, 99, 132, 0.6)'
           } 
@@ -133,11 +134,11 @@ class App extends Component {
     //Make the AJAX CALL HERE
     this.setState({
       restoreVmdkChartData: {
-        labels : ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10"],
+        labels : ["b1","b2","b3","b4","b5"],
         datasets: [ {
             label: "restoreVmdkChartData",
             data: [
-              100,200,321,153,299,198,200,232,212,311
+              130,200,321,153,299
             ],
             backgroundColor:'rgba(255, 206, 86, 0.6)'
             
@@ -154,8 +155,8 @@ class App extends Component {
 
     return (
 		<Router>
-			<div style={{display: 'flex', flexDirection: 'row'}}>
-				<div style={{width: 220, backgroundColor: 'grey'}}>
+			<div style={{display: 'flex', flexDirection: 'row', backgroundColor: 'grey'}}>
+				<div style={{width: 550, backgroundColor: 'grey'}}>
 					<SideNav default='dashboard' highlightBgColor='blue' highlightColor='white'>
 						<Nav id='dashboard'>
 							<NavText>  Dashboard </NavText>
@@ -170,7 +171,7 @@ class App extends Component {
 				</div>
 				<div style={{padding: 20, backgroundColor: 'grey'}}>
 					<Route exact path="/dashboard" render={this.renderDashboard}/>
-					<Route path="/sales" render={this.renderInflight}/>
+					<Route path="/inflight" render={this.renderInflight}/>
 					<Route path="/products" render={this.renderStatistics}/>
 					<Route path="/chartDetails" render={this.renderChartDetails}/>
 				</div>
