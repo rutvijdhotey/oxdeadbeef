@@ -4,6 +4,7 @@ import './App.css';
 import Dashboard from './Dashboard';
 import Inflight from './components/Inflight';
 import MemoryStats from './components/MemoryStats';
+import Statistics from './components/Statistics';
 import ChartDetails from './ChartDetails';
 import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
@@ -33,7 +34,9 @@ class App extends Component {
     this.getRestoreVmChartData();
     this.getRestoreVmdkChartData();
     this.getPerformanceChartData();
-	  this.getRGBackupChartData();
+	this.getRGBackupChartData();
+	this.getStatistics();
+	this.getRGBackupChartData();
     this.getInflightInformation();
     this.getResourceUtilization();
   }
@@ -52,7 +55,7 @@ class App extends Component {
     }
 
     renderStatistics = () => {
-        return <div>Statistics</div>;
+        return <Statistics scvStatistics = {this.state.scvStatistics} serverStatistics = {this.state.serverStatistics} ontapStatistics = {this.state.ontapStatistics}/>;
     }
 
     renderApiDocs = () => {
@@ -138,6 +141,60 @@ getResourceUtilization() {
           }
         ]
       }
+    });
+  }
+  
+  getStatistics() {
+	this.setState({
+      scvStatistics: [{
+		counter: 'apivmpowerOff()',
+		numberOfTimes: 3,
+		average: 51,
+		median: 12
+	  },{
+		counter: 'Unregister virtual machine',
+		numberOfTimes: 4,
+		average: 10,
+		median: 20
+	  },{
+		counter: 'Register virtual machine',
+		numberOfTimes: 3,
+		average: 20,
+		median: 30
+	  },{
+		counter: 'Reconfigure virtual machine',
+		numberOfTimes: 6,
+		average: 16,
+		median: 26
+	  },{
+		counter: 'Power On virtual machine',
+		numberOfTimes: 1,
+		average: 2,
+		median: 3
+	  }],
+	  serverStatistics: [{
+		counter: 'Discovering resources',
+		numberOfTimes: 2,
+		average: 37,
+		median: 56
+	  },{
+		counter: 'Prescripts',
+		numberOfTimes: 4,
+		average: 47,
+		median: 57
+	  },{
+		counter: 'Postscripts',
+		numberOfTimes: 3,
+		average: 32,
+		median: 46
+	  }],
+	  ontapStatistics: [{
+		counter: 'Creating snapshot',
+		numberOfTimes: 2,
+		average: 37,
+		median: 56
+	  }]
+	  
     });
   }
 
@@ -378,47 +435,47 @@ marginRight: '0px',
          };
     return (
 		<Router>
-      <Container>
-        <Row>
-          <Col sm="2" >
-            <div style={dashboardPanelStyle}>
-              <SideNav  default='dashboard' highlightBgColor='black' highlightColor='white'>
-                <Nav id='dashboard'>
-                  <NavText>  Dashboard </NavText>
-                </Nav>
-                <Nav id='inflight'>
-                  <NavText> In-flight </NavText>
-                </Nav>
-                <Nav id='statistics'>
-                  <NavText>  Statistics </NavText>
-                </Nav>
-                <Nav id='memoryStats'>
-                  <NavText>  Resource Utilization </NavText>
-                </Nav>
-                <Nav id='apiDocs'>
-                  <NavText>  Api Docs </NavText>
-                </Nav>
-                <Nav id='about'>
-                  <NavText>  About </NavText>
-                </Nav>
-              </SideNav>
-           </div>
-          </Col>
-          <Col sm="10">
-            <div style={dashboardStyle}>
-              <Route exact path="/dashboard" render={this.renderDashboard}/>
-              <Route path="/inflight" render={this.renderInflight}/>
-              <Route path="/memoryStats" render={this.renderMemoryStats}/>
-              <Route path="/statistics" render={this.renderStatistics}/>
-              <Route path="/apiDocs" render={this.renderApiDocs}/>
-              <Route path="/about" render={this.renderAbout}/>
-              <Route path="/chartDetails" render={(props) => (
-                <ChartDetails style= {{width: '100%'}} rgBackupChartData = {this.state.rgBackupChartData} {...props} />
-              )}/>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+		  <Container>
+			<Row>
+			  <Col sm="2" >
+				<div style={dashboardPanelStyle}>
+				  <SideNav  default='dashboard' highlightBgColor='black' highlightColor='white'>
+					<Nav id='dashboard'>
+					  <NavText>  Dashboard </NavText>
+					</Nav>
+					<Nav id='inflight'>
+					  <NavText> In-flight </NavText>
+					</Nav>
+					<Nav id='statistics'>
+					  <NavText>  Statistics </NavText>
+					</Nav>
+					<Nav id='memoryStats'>
+					  <NavText>  Resource Utilization </NavText>
+					</Nav>
+					<Nav id='apiDocs'>
+					  <NavText>  Api Docs </NavText>
+					</Nav>
+					<Nav id='about'>
+					  <NavText>  About </NavText>
+					</Nav>
+				  </SideNav>
+			   </div>
+			  </Col>
+			  <Col sm="10">
+				<div style={dashboardStyle}>
+				  <Route exact path="/dashboard" render={this.renderDashboard}/>
+				  <Route path="/inflight" render={this.renderInflight}/>
+				  <Route path="/memoryStats" render={this.renderMemoryStats}/>
+				  <Route path="/statistics" render={this.renderStatistics}/>
+				  <Route path="/apiDocs" render={this.renderApiDocs}/>
+				  <Route path="/about" render={this.renderAbout}/>
+				  <Route path="/chartDetails" render={(props) => (
+					<ChartDetails style= {{width: '100%'}} rgBackupChartData = {this.state.rgBackupChartData} {...props} />
+				  )}/>
+				</div>
+			  </Col>
+			</Row>
+		  </Container>
 		</Router>
     );
   }
