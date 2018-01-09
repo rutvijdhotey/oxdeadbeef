@@ -59,11 +59,14 @@ class App extends Component {
     }
 
     renderApiDocs = () => {
-        return <div>localhost:8000/swagger</div>;
+        return <a href="localhost:8000/swagger">Swagger Link</a>;
     }
 
     renderAbout = () => {
-        return <div>About Info</div>;
+        return <div>
+				<div>SC Version 4.0</div>
+				<div>SCV Version 4.0</div>
+				</div>;
     }
 	
 	renderChartDetails = () => {
