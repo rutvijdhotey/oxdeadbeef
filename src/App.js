@@ -119,17 +119,17 @@ getResourceUtilization() {
         datasets: [
           // Add the data for the Performance here
           {label: "Restore VMDK",
-            data: [, ,99,99, 102,,],
+            data: [, ,54,56, 56,,],
             fill: false,
             borderColor: '#ff6666'
           },
           {label: "Restore VM",
-            data: [,77, 77, 77, 78,,],
+            data: [,65, 65, 68, 78,,],
             fill: false,
             borderColor: '#66b3ff'
           },
-          {label: "Backup VMDK",
-            data: [44, 44, 45, 47, 47, 47, 47,48],
+          {label: "Discovery VMDK",
+            data: [4, 4, 5, 7, 7, 7, 7, 8],
             fill: false,
             borderColor: '#ffb84d'
           },
@@ -146,52 +146,111 @@ getResourceUtilization() {
   getStatistics() {
 	this.setState({
       scvStatistics: [{
-		counter: 'apivmpowerOff()',
+		counter: 'powerOffVm()',
 		numberOfTimes: 3,
-		average: 51,
-		median: 12
+		average: 178,
+		median: 178
 	  },{
-		counter: 'Unregister virtual machine',
-		numberOfTimes: 4,
-		average: 10,
-		median: 20
+		counter: 'unregisterVm()',
+		numberOfTimes: 9,
+		average: 580,
+		median: 600
 	  },{
-		counter: 'Register virtual machine',
-		numberOfTimes: 3,
-		average: 20,
-		median: 30
+		counter: 'registerVM()',
+		numberOfTimes: 9,
+		average: 498,
+		median: 490
 	  },{
-		counter: 'Reconfigure virtual machine',
+		counter: 'reconfigVm()',
 		numberOfTimes: 6,
-		average: 16,
-		median: 26
+		average: 1120,
+		median: 1056
 	  },{
-		counter: 'Power On virtual machine',
-		numberOfTimes: 1,
-		average: 2,
-		median: 3
-	  }],
-	  serverStatistics: [{
-		counter: 'Discovering resources',
-		numberOfTimes: 2,
-		average: 37,
-		median: 56
-	  },{
-		counter: 'Prescripts',
-		numberOfTimes: 4,
-		average: 47,
-		median: 57
-	  },{
-		counter: 'Postscripts',
+		counter: 'powerOnVm()',
 		numberOfTimes: 3,
-		average: 32,
-		median: 46
-	  }],
+		average: 800,
+		median: 780
+	  },{
+    counter: 'destroyVm()',
+    numberOfTimes: 4,
+    average: 495,
+    median: 514
+    },{counter: 'createSnapshot()',
+    numberOfTimes: 9,
+    average: 15010,
+    median: 15145
+    },{counter: 'getDatastoreByMoref()',
+    numberOfTimes: 6,
+    average: 678,
+    median: 702
+    },{counter: 'getEntitiesByMoref()',
+    numberOfTimes: 15,
+    average: 5640,
+    median: 5708
+    },{counter: 'getDatacenterList()',
+    numberOfTimes: 6,
+    average: 4032,
+    median: 4203
+    },{counter: 'getSpanningDatastoreList()',
+    numberOfTimes: 6,
+    average: 234,
+    median: 290
+    },
+    ,{counter: 'getVirtualMachineById()',
+    numberOfTimes: 23 ,
+    average: 356,
+    median: 321
+    },{counter: 'getVirtualDiskById()',
+    numberOfTimes: 14,
+    average: 574,
+    median: 521
+    }],
+	  serverStatistics: [{
+		counter: 'createProtectionGroup()',
+		numberOfTimes: 6,
+		average: 6144,
+		median: 6205
+	  },{
+    counter: 'getProetctionGroupByNameOrId()',
+    numberOfTimes: 2,
+    average: 6004,
+    median: 6106
+    },{
+    counter: 'getProtectionGroupByNameOrMoref()',
+    numberOfTimes: 2,
+    average: 2117,
+    median: 2201
+    },{
+    counter: 'addPolicy()',
+    numberOfTimes: 3,
+    average: 3012,
+    median: 3149
+    },{
+    counter: 'getPolicy()',
+    numberOfTimes: 6,
+    average: 8845,
+    median: 8804
+    },{
+    counter: 'createBackup()',
+    numberOfTimes: 9,
+    average: 20456,
+    median: 21006
+    },{
+    counter: 'getBackupDetails()',
+    numberOfTimes: 2,
+    average: 6561,
+    median: 6780
+    },{
+    counter: 'restoreFile()',
+    numberOfTimes: 9,
+    average: 65784,
+    median: 68477
+    }],
 	  ontapStatistics: [{
-		counter: 'Creating snapshot',
-		numberOfTimes: 2,
-		average: 37,
-		median: 56
+		counter: 'create-snapshot',
+		numberOfTimes: 9,
+		average: 'xxxxxx',
+		median: 'xxxxx'
 	  }]
 	  
     });
@@ -201,11 +260,11 @@ getBackupVmChartData() {
     //Make the AJAX CALL HERE
     this.setState({
       backupVmChartData: {
-        labels : ["b1","b2","b3","b4","b5"],
+        labels : ["RG_01","RG_02","RG_03","RG_04","RG_05"],
         datasets: [ {
-            label: "backupVmChartData",
+            label: "Backup Time",
             data: [
-              130,200,321,153,299
+              24,21,26,30,27
             ],
             backgroundColor:'#66cc66'
           } 
@@ -217,11 +276,11 @@ getBackupVmChartData() {
     //Make the AJAX CALL HERE
     this.setState({
       backupVmdkChartData: {
-        labels : ["b1","b2","b3","b4","b5",],
+        labels : ["VM_02.vmdk","VM_03.vmdk","VM_06.vmdk","VM_01.vmdk","VM_11.vmdk"],
         datasets: [ {
-            label: "backupVmdkChartData",
+            label: "Discovery Time",
             data: [
-              10,223,311,153,29
+              5,6,7,4,8
             ],
             backgroundColor:'#ffb84d'
           } 
@@ -234,11 +293,11 @@ getBackupVmChartData() {
     //Make the AJAX CALL HERE
     this.setState({
       restoreVmChartData: {
-        labels : ["b1","b2","b3","b4","b5"],
+        labels : ["VM_03","VM_09","VM_13","VM_04","VM_07"],
         datasets: [ {
-            label: "restoreVmChartData",
+            label: "Restore Time",
             data: [
-              30,212,412,123,123
+              78,84,65,78,91
             ],
             backgroundColor:'#66b3ff'
           } 
@@ -251,11 +310,11 @@ getBackupVmChartData() {
     //Make the AJAX CALL HERE
     this.setState({
       restoreVmdkChartData: {
-        labels : ["b1","b2","b3","b4","b5"],
+        labels : ["VM_12.vmdk","VM_03.vmdk","VM_07.vmdk","VM_01.vmdk","VM_43.vmdk"],
         datasets: [ {
-            label: "restoreVmdkChartData",
+            label: "Restore Time",
             data: [
-              331,412,231,112,454
+              54,51,65,49,51
             ],
             backgroundColor:'#ff6666'
             
@@ -268,13 +327,13 @@ getBackupVmChartData() {
   getRGBackupChartData() {
 	  this.setState({
 		  rgBackupChartData: {
-			  RG1: {
+			  RG_01: {
 				  DatastoreData: {
-					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  labels : ["DS_1","DS_2","DS_3","DS_4","DS_5"],
 					  datasets: [ {
-						label: "top5DSData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  13,20,21,13,29
 						],
 						backgroundColor:
 						  '#00b300'
@@ -283,11 +342,11 @@ getBackupVmChartData() {
 				  },
 				  
 				  VmData: {
-					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  labels : ["VM_01","VM_02","VM_03","VM_04","VM_05"],
 					  datasets: [ {
-						label: "top5VMData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  12,20,11,15,21
 						],
 						backgroundColor:
 						  'rgba(153, 102, 255, 0.6)'
@@ -295,13 +354,13 @@ getBackupVmChartData() {
 					  ]
 				  }
 			  },
-			  RG2: {
+			  RG_02: {
 				  DatastoreData: {
-					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  labels : ["DS_10","DS_11","DS_12",,],
 					  datasets: [ {
-						label: "top5DSData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  13,28,21,,,
 						],
 						backgroundColor:
 						  '#00b300'
@@ -310,11 +369,11 @@ getBackupVmChartData() {
 				  },
 				  
 				  VmData: {
-					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  labels : ["VM_02","VM_04","VM_05", , ],
 					  datasets: [ {
-						label: "top5VMData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  21 ,12 ,22, 18, 24
 						],
 						backgroundColor:
 						  'rgba(153, 102, 255, 0.6)'
@@ -322,13 +381,13 @@ getBackupVmChartData() {
 					  ]
 				  }
 			  },
-			  RG3: {
+			  RG_03: {
 				  DatastoreData: {
-					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  labels : ["DS_13","DS_5", , , ],
 					  datasets: [ {
-						label: "top5DSData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  23,23, , , 
 						],
 						backgroundColor:
 						  '#00b300'
@@ -337,11 +396,11 @@ getBackupVmChartData() {
 				  },
 				  
 				  VmData: {
-					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  labels : ["VM_11","VM_21","VM_03","VM_31"],
 					  datasets: [ {
-						label: "top5VMData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  15,25,21,27,
 						],
 						backgroundColor:
 						  'rgba(153, 102, 255, 0.6)'
@@ -349,13 +408,13 @@ getBackupVmChartData() {
 					  ]
 				  }
 			  },
-			  RG4: {
+			  RG_04: {
 				  DatastoreData: {
-					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  labels : ["DS_1","DS_2","DS_3","DS_4","DS_5"],
 					  datasets: [ {
-						label: "top5DSData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  21,17,16,20,17
 						],
 						backgroundColor:
 						  '#00b300'
@@ -364,11 +423,11 @@ getBackupVmChartData() {
 				  },
 				  
 				  VmData: {
-					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  labels : ["VM_01","VM_02","VM_03","VM_04","VM_05"],
 					  datasets: [ {
-						label: "top5VMData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  19,25,29,27,21
 						],
 						backgroundColor:
 						  'rgba(153, 102, 255, 0.6)'
@@ -376,13 +435,13 @@ getBackupVmChartData() {
 					  ]
 				  }
 			  },
-			  RG5: {
+			  RG_05: {
 				  DatastoreData: {
-					  labels : ["DS1","DS2","DS3","DS4","DS5"],
+					  labels : ["DS_1","DS_2","DS_3","DS_4",],
 					  datasets: [ {
-						label: "top5DSData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						 12,17,16,20,
 						],
 						backgroundColor:
 						  '#00b300'
@@ -391,11 +450,11 @@ getBackupVmChartData() {
 				  },
 				  
 				  VmData: {
-					  labels : ["VM1","VM2","VM3","VM4","VM5"],
+					  labels : ["VM_01","VM_02","VM_03","VM_04","VM_05"],
 					  datasets: [ {
-						label: "top5VMData",
+						label: "Backup Time",
 						data: [
-						  130,200,321,153,299
+						  18,17,16,26,24
 						],
 						backgroundColor:
 						  'rgba(153, 102, 255, 0.6)'
@@ -413,23 +472,13 @@ getBackupVmChartData() {
     this.setState({
       inflightInformation: {
           vmWareAPICalls: {
-			  "get-VirtualDiskById()": 0,
-			  "get-VirtualMachineById()":0,
-			  "get-DatastoreByMoref()": 0,
-			  "createSnapshot()": 5,
-			  "deleteSnapshot()": 0
+			  
 		  },
 		  scServerAPICalls: {
-			  "createProtectionGroup()": 0,
-			  "getProetctionGroupByNameOrId()": 1,
-			  "getProtectionGroupByNameOrMoref()": 0,
-			  "addPolicy()": 0,
-			  "getPolicy()": 0,
-			  "createBackup()": 10,
-			  "getBackupDetails()": 0
+			  
 		  },
 		  ontapZAPICalls: {
-			  "createSnapshot()": 10
+			  
 		  }
       }
     });
@@ -459,14 +508,14 @@ getBackupVmChartData() {
 
 //background: 'linear-gradient(to bottom, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-
+            
             width : '16%',
             marginRight: '0px',
             margin: '0px',
             clear: 'both',
             height: '230%',
             color: 'black',
-            position: 'absolute',
+            position: 'fixed',
             border: '2px solid black',
             
          };

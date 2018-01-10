@@ -57,11 +57,12 @@ class ChartDetails extends Component {
 		    yAxes: [{
 		    	ticks: {
                     fontSize: 13,
-                    color: 'white'
+                    color: 'white',
+                    beginAtZero: true
                    },
 		    	scaleLabel: {
 			        display: true,
-			        labelString: 'Time (ms)',
+			        labelString: 'Time (secs)',
 			        fontColor: 'black'
       				},
 		            gridLines: {

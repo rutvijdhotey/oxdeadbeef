@@ -73,11 +73,12 @@ class Chart extends Component{
 		    yAxes: [{
 		    	ticks: {
                     fontSize: 13,
-                    color: 'white'
+                    color: 'white',
+                    beginAtZero: true
                    },
 		    	scaleLabel: {
 			        display: true,
-			        labelString: 'Time (ms)',
+			        labelString: 'Time (secs)',
 			        fontColor: 'black'
       				},
 		            gridLines: {
@@ -91,8 +92,6 @@ class Chart extends Component{
 			case "BackupVM":
 				optionsBarGraph["onClick"] = this.handleBackupVMChartClick;
 				break;
-			case "BackupVMDK":
-				optionsBarGraph["onClick"] = this.handleBackupVMDKChartClick;
 			default:
 				break;
 				
@@ -111,6 +110,49 @@ class Chart extends Component{
 			float: 'right',
 			marginBottom: '20px',
 		};
+
+		var optionsDiscoveryBarCharts = {
+
+			legend: {
+				display: false
+			},
+			maintainAspectRatio: true,
+			scales: {
+		    xAxes: [{
+		    	ticks: {
+                    fontSize: 13,
+                    color: 'black'
+                   },
+		    	scaleLabel: {
+			        display: true,
+        labelString: "Names",
+        fontColor: "black",
+      				},
+		            gridLines: {
+		                    display:false,
+		                    color: 'black'
+		                }
+		            }],
+		    yAxes: [{
+		    	ticks: {
+                    fontSize: 13,
+                    color: 'white',
+                    beginAtZero: true
+                   },
+		    	scaleLabel: {
+			        display: true,
+			        labelString: 'Time (secs)',
+			        fontColor: 'black'
+      				},
+		            gridLines: {
+		                display:false,
+		                color: 'black'
+		            }   
+	            }]
+		    }
+		
+		};
+
 		var stylesLineCharts = {
 			width: '90%',
 			height: '10%',
@@ -140,7 +182,7 @@ class Chart extends Component{
 		      },
 		      scaleLabel: {
 		        display: true,
-		        labelString: "Dates",
+		        labelString: "Sampling Dates",
 		        fontColor: "black"
 		      }
 		    }],
@@ -151,7 +193,7 @@ class Chart extends Component{
 		      },
 		      scaleLabel: {
 		        display: true,
-		        labelString: "Time (ms)",
+		        labelString: "Time (secs)",
 		        fontColor: "black"
 		      }
 		    }],
@@ -194,10 +236,10 @@ class Chart extends Component{
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 VMDK Backup Times</h3>
+					<h3 style = {headerStyles}> Top 5 VMDK Discovery Times</h3>
 					<Bar
 						data={this.state.backupVmdkChartData }
-						options={this.getBarGraphOptions("BackupVMDK")}
+						options={optionsDiscoveryBarCharts}
 					/>
 				</div>
 			</div>

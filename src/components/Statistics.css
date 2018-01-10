@@ -1,4 +1,4 @@
 
-.ReactTable .rt-tbody{
-	overflow: hidden
+.ReactTable .rt-thead {
+  overflow-y: scroll;
 }

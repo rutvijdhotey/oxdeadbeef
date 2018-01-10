@@ -10,15 +10,90 @@ class Inflight extends Component {
 			//Enter the State of the Inflight Operations
 		}
 		
+		setTimeout(function(){
+             this.setState({
+			  inflightInformation: {
+				  vmWareAPICalls: {
+					 "getVirtualDiskById()": 0,
+					  "getVirtualMachineById()":0,
+					  "getDatastoreByMoref()": 0,
+					  "createSnapshot()": 5,
+					  "deleteSnapshot()": 0,
+					  "getAllDatastoresForVM()": 0,
+					  "getEsxHostByMoref()": 0,
+					  "powerOffVm()": 0,
+					  "destroyVM()": 0,
+					  "unregisterVM()": 0,
+					  "setExtraConfigOptionsOnVM()": 0
+				  },
+				  scServerAPICalls: {
+					  "createProtectionGroup()": 0,
+					  "getProetctionGroupByNameOrId()": 1,
+					  "getProtectionGroupByNameOrMoref()": 0,
+					  "addPolicy()": 0,
+					  "getPolicy()": 0,
+					  "createBackup()": 10,
+					  "getBackupDetails()": 0,
+				      "getBackupDetails()": 0,
+				      "getDatasetJobDetails()": 0
+				  },
+				  ontapZAPICalls: {
+					  "createSnapshot()": 10
+				  }
+			  }
+			});
+        }.bind(this),3000);
+
+
 		 setTimeout(function(){
              this.setState({
 			  inflightInformation: {
 				  vmWareAPICalls: {
-					  "get-VirtualDiskById()": 0,
-					  "get-VirtualMachineById()":0,
-					  "get-DatastoreByMoref()": 0,
+					  "getVirtualDiskById()": 0,
+					  "getVirtualMachineById()":0,
+					  "getDatastoreByMoref()": 0,
 					  "createSnapshot()": 0,
-					  "deleteSnapshot()": 0
+					  "deleteSnapshot()": 0,
+					  "getAllDatastoresForVM()": 0,
+					  "getEsxHostByMoref()": 0,
+					  "powerOffVm()": 0,
+					  "destroyVM()": 0,
+					  "unregisterVM()": 0,
+					  "setExtraConfigOptionsOnVM()": 0
+				  },
+				  scServerAPICalls: {
+					  "createProtectionGroup()": 0,
+					  "getProetctionGroupByNameOrId()": 0,
+					  "getProtectionGroupByNameOrMoref()": 0,
+					  "addPolicy()": 0,
+					  "getPolicy()": 0,
+					  "createBackup()": 5,
+					  "getBackupDetails()": 0,
+					  "getDatasetJobDetails()": 0,
+
+				  },
+				  ontapZAPICalls: {
+					  "createSnapshot()": 0
+				  }
+			  }
+			});
+        }.bind(this),7000);
+
+		 setTimeout(function(){
+             this.setState({
+			  inflightInformation: {
+				  vmWareAPICalls: {
+					  "getVirtualDiskById()": 0,
+					  "getVirtualMachineById()":0,
+					  "getDatastoreByMoref()": 0,
+					  "createSnapshot()": 0,
+					  "deleteSnapshot()": 0,
+					  "getAllDatastoresForVM()": 0,
+					  "getEsxHostByMoref()": 0,
+					  "powerOffVm()": 0,
+					  "destroyVM()": 0,
+					  "unregisterVM()": 0,
+					  "setExtraConfigOptionsOnVM()": 0
 				  },
 				  scServerAPICalls: {
 					  "createProtectionGroup()": 0,
@@ -27,14 +102,15 @@ class Inflight extends Component {
 					  "addPolicy()": 0,
 					  "getPolicy()": 0,
 					  "createBackup()": 0,
-					  "getBackupDetails()": 0
+					  "getBackupDetails()": 0,
+					  "getDatasetJobDetails()": 0
 				  },
 				  ontapZAPICalls: {
 					  "createSnapshot()": 0
 				  }
 			  }
 			});
-        }.bind(this),10000);
+        }.bind(this),11000);
 	}
 	
 	render() {

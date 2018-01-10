@@ -22,15 +22,15 @@ class Statistics extends Component {
     accessor: 'counter', // String-based value accessors!
 	minWidth: 350
   }, {
-    Header: 'Number of Times',
+    Header: 'Number of Times(ms)',
     accessor: 'numberOfTimes',
 	minWidth: 200
   }, {
-    Header: 'Average',
+    Header: 'Average(ms)',
     accessor: 'average',
 	minWidth: 200
   }, {
-    Header: 'Median',
+    Header: 'Median(ms)',
     accessor: 'median',
 	minWidth: 200
   }];
@@ -45,8 +45,8 @@ class Statistics extends Component {
   }
   
   const tableStyle = {
-	  height: 300,
-	  marginBottom: 100,
+	  height: 410,
+	  marginBottom: 50,
 	  overflow:"hidden",
 	  textAlign: 'center',
 	  border: '1px solid black',
