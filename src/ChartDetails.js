@@ -34,19 +34,42 @@ class ChartDetails extends Component {
 	}
 		
 	var optionsBarGraph = {
+		legend: {
+				display: false
+			},
 			maintainAspectRatio: true,
 			scales: {
-		    xAxes: [{
-		                gridLines: {
-		                    display:false
+			    xAxes: [{
+		    	ticks: {
+                    fontSize: 13,
+                    color: 'black'
+                   },
+		    	scaleLabel: {
+			        display: true,
+        labelString: "Names",
+        fontColor: "black",
+      				},
+		            gridLines: {
+		                    display:false,
+		                    color: 'black'
 		                }
 		            }],
 		    yAxes: [{
-		                gridLines: {
-		                    display:false
-		                }   
-		            }]
-		    }
+		    	ticks: {
+                    fontSize: 13,
+                    color: 'white'
+                   },
+		    	scaleLabel: {
+			        display: true,
+			        labelString: 'Time (ms)',
+			        fontColor: 'black'
+      				},
+		            gridLines: {
+		                display:false,
+		                color: 'black'
+		            }   
+	            }]
+			    }
 		}
 	
 	var chartData = this.state.rgBackupChartData;
@@ -75,8 +98,6 @@ class ChartDetails extends Component {
 					options={optionsBarGraph}
 				/>
 			</div>
-			
-			
 		</div>
 		);
 		

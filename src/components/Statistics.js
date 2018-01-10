@@ -47,16 +47,18 @@ class Statistics extends Component {
   const tableStyle = {
 	  height: 300,
 	  marginBottom: 100,
-	  overflow:"hidden"
+	  overflow:"hidden",
+	  textAlign: 'center',
+	  border: '1px solid black'
   }
   
 	
     return (
 	<div>
 	  System up since 1/2/2018 5:06 PM.
-	  
-	  SCV counters and information.  All times are in milliseconds.
-	
+	  <div>
+	  SCV counters and information. All times are in milliseconds.
+	</div>
 	  <h3>VMware APIs invoked by SCV</h3>
 	  <ReactTable
 		data={this.state.scvStatistics}

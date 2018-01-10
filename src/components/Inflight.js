@@ -38,7 +38,7 @@ class Inflight extends Component {
 	}
 	
 	render() {
-		
+
 		
 			var vmWareInfo = this.state.inflightInformation.vmWareAPICalls;
 			const vmRows = Object.keys(vmWareInfo).map(function(keyName, keyIndex) {
@@ -77,11 +77,11 @@ class Inflight extends Component {
 		return (
 			<div className = "inflightInformation">
 				<h3>
-					InFlight Operations
+					In-flight Operations
 				</h3>
 				
 				<h4>
-					VmWare facing API Calls:
+					VMware facing API Calls:
 				</h4>
 				
 				<ul>

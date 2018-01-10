@@ -112,13 +112,13 @@ class Chart extends Component{
 			width: '45%',
 			height: '30%',
 			paddingRight: '5%',
-			float: 'right'
+			float: 'right',
+			marginBottom: '20px',
 		};
 		var stylesLineCharts = {
 			width: '90%',
 			height: '10%',
-			margin: '0 auto',
-			bottom: '20px'
+			marginBottom: '20px',
 		};
 		
 		var headerStyles = {
@@ -127,32 +127,40 @@ class Chart extends Component{
 		}
 		//Options Line Graph
 		var optionsLineGraph = {
+			legend: {
+				labels : {
+            		useLineStyle: true
+        		}				
+			},
 			maintainAspectRatio: true,
 			showLines: true,
 			scales: {
-    xAxes: [{
-    	barPercentage: 0.5,
-      gridLines: {
-        display: true,
-        color: "black"
-      },
-      scaleLabel: {
-        display: true,
-        labelString: "Names",
-        fontColor: "black"
-      }
-    }],
-    yAxes: [{
-      gridLines: {
-        color: "black",
-        borderDash: [2, 5],
-      },
-      scaleLabel: {
-        display: true,
-        labelString: "Time (ms)",
-        fontColor: "black"
-      }
-    }]
+		    xAxes: [{
+		    	barPercentage: 0.5,
+		      gridLines: {
+		        display: true,
+		        color: "black"
+		      },
+		      scaleLabel: {
+		        display: true,
+		        labelString: "Names",
+		        fontColor: "black"
+		      }
+		    }],
+		    yAxes: [{
+		      gridLines: {
+		        color: "black",
+		        borderDash: [2, 5],
+		      },
+		      scaleLabel: {
+		        display: true,
+		        labelString: "Time (ms)",
+		        fontColor: "black"
+		      }
+		    }],
+		    legends : {
+
+		    }
   }
 		}
 

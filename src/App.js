@@ -59,14 +59,14 @@ class App extends Component {
     }
 
     renderApiDocs = () => {
-        return <a href="localhost:8000/swagger">Swagger Link</a>;
+        return <a href="https://10.235.240.74:8144/api/swagger-ui.html">Swagger Link</a>;
     }
 
     renderAbout = () => {
         return <div>
 				<h3>Einstein Version 1.0  &copy;</h3>
 				<h4>SnapCenter Version : 4.0</h4>
-				<h4>SnapCenter Plug-in for VMWare vSphere Version : 4.0</h4>
+				<h4>SnapCenter Plug-in for VMware vSphere Version : 4.0</h4>
 				</div>;
     }
 	
@@ -120,7 +120,7 @@ getResourceUtilization() {
           {label: "Backup VMDK",
             data: [11, 4, 43, 9, 6, 2, 92],
             fill: false,
-            borderColor: 'brown'
+            borderColor: 'grey'
           },
           {label: "Backup VM",
             data: [8, 12, 4, 9, 34, 7, 9],
@@ -210,7 +210,7 @@ getBackupVmChartData() {
         datasets: [ {
             label: "backupVmdkChartData",
             data: [
-              130,200,321,153,299
+              10,223,311,153,29
             ],
             backgroundColor:'#66cc66'
           } 
@@ -227,7 +227,7 @@ getBackupVmChartData() {
         datasets: [ {
             label: "restoreVmChartData",
             data: [
-              130,200,321,153,299
+              30,212,412,123,123
             ],
             backgroundColor:'#66b3ff'
           } 
@@ -244,7 +244,7 @@ getBackupVmChartData() {
         datasets: [ {
             label: "restoreVmdkChartData",
             data: [
-              130,200,321,153,299
+              331,412,231,112,454
             ],
             backgroundColor:'#66b3ff'
             
@@ -425,38 +425,34 @@ getBackupVmChartData() {
   }
 
   render() {
-         var dashboardStyle = {
-            
-width : '80%',
-float: 'right',
-paddingLeft: '21px',
-paddingTop: '10px',
-height: '1400px'
-          };
+        var dashboardStyle = {
+            width : '80%',
+            float: 'right',
+            paddingLeft: '21px',
+            paddingTop: '10px',
+            height: '1400px'
+        };
 
         var dashboardPanelStyle = {
-width : '18.5%',
-background: '#304352',  /* fallback for old browsers */
-background: '-webkit-linear-gradient(to right, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
-background: 'linear-gradient(to right, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-marginRight: '0px',
-    margin: '0px',
-    clear: 'both',
-    height: '200%',
-    color: 'white',
-    position: 'absolute',
-    border: '2px solid black'
+            width : '18.5%',
+            marginRight: '0px',
+            margin: '0px',
+            clear: 'both',
+            height: '230%',
+            color: 'black',
+            position: 'absolute',
+            border: '2px solid black',
+            paddingTop: '20px'
          };
 
-         var dashboardCommon = {
-
-         };
     return (
 		<Router>
 		  <Container>
 			<Row>
 			  <Col sm="2" >
+
 				<div style={dashboardPanelStyle}>
+        <h3 style = {{textAlign: 'center'}}> Einstein </h3>
 				  <SideNav  default='dashboard' highlightBgColor='black' highlightColor='white'>
 					<Nav id='dashboard'>
 					  <NavText>  Dashboard </NavText>
@@ -471,7 +467,7 @@ marginRight: '0px',
 					  <NavText>  Resource Utilization </NavText>
 					</Nav>
 					<Nav id='apiDocs'>
-					  <NavText>  Api Docs </NavText>
+					  <NavText>  API Docs </NavText>
 					</Nav>
 					<Nav id='about'>
 					  <NavText>  About </NavText>
