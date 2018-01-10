@@ -10,6 +10,7 @@ import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
+import Iframe from 'react-iframe'
 
 const SideNav = withRR4();
   
@@ -58,15 +59,22 @@ class App extends Component {
         return <Statistics scvStatistics = {this.state.scvStatistics} serverStatistics = {this.state.serverStatistics} ontapStatistics = {this.state.ontapStatistics}/>;
     }
 
-    renderApiDocs = () => {
-        return <a href="localhost:8000/swagger">Swagger Link</a>;
+    renderApiDocs = () => { //Replace with Swagger
+        return <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
+        width="450px"
+        height="450px"
+        id="myId"
+        className="myClassname"
+        display="initial"
+        position="relative"
+        allowFullScreen/>;
     }
 
     renderAbout = () => {
         return <div>
 				<h3>Einstein Version 1.0  &copy;</h3>
-				<h4>SnapCenter Version : 4.0</h4>
-				<h4>SnapCenter Plug-in for VMWare vSphere Version : 4.0</h4>
+				<h4>SnapCenter Server Version 4.0.0.465</h4>
+				<h4>SnapCenter Plug-in for VMware vSphere Version 4.0.0.465</h4>
 				</div>;
     }
 	
