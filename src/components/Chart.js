@@ -93,10 +93,6 @@ class Chart extends Component{
 				break;
 			case "BackupVMDK":
 				optionsBarGraph["onClick"] = this.handleBackupVMDKChartClick;
-			case "RestoreVM":
-				optionsBarGraph["onClick"] = this.handleRestoreVMChartClick;
-			case "RestoreVMDK":
-				optionsBarGraph["onClick"] = this.handleRestoreVMDKChartClick; 
 			default:
 				break;
 				

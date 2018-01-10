@@ -39,6 +39,9 @@ class Inflight extends Component {
 	
 	render() {
 
+var listElementStyles = {
+	paddingBottom :  '10px'
+};
 		
 			var vmWareInfo = this.state.inflightInformation.vmWareAPICalls;
 			const vmRows = Object.keys(vmWareInfo).map(function(keyName, keyIndex) {
@@ -46,7 +49,7 @@ class Inflight extends Component {
 				console.log("IN PROGRESS: " + inProgress);
 				console.log(keyName);
 				return(
-					<li key={"vmWare" + keyName}>{keyName} : <span style={{color: inProgress ? "red" : "green"}}> {inProgress ? vmWareInfo[keyName] + " in Progress" : "Finished" } </span> </li>
+					<li style = {listElementStyles} key={"vmWare" + keyName}>{keyName} : <span style={{color: inProgress ? "red" : "green"}}> {inProgress ? vmWareInfo[keyName] + " in Progress" : "Finished" } </span> </li>
 				);
 		
 			});
@@ -57,7 +60,7 @@ class Inflight extends Component {
 				console.log("IN PROGRESS: " + inProgress);
 				console.log(keyName);
 				return(
-					<li key={"vmWare" + keyName}>{keyName} : <span style={{color: inProgress ? "red" : "green"}}> {inProgress ? scInfo[keyName] + " in Progress" : "Finished" } </span> </li>
+					<li style = {listElementStyles} key={"vmWare" + keyName}>{keyName} : <span style={{color: inProgress ? "red" : "green"}}> {inProgress ? scInfo[keyName] + " in Progress" : "Finished" } </span> </li>
 				);
 		
 			});
@@ -68,7 +71,7 @@ class Inflight extends Component {
 				console.log("IN PROGRESS: " + inProgress);
 				console.log(keyName);
 				return(
-					<li key={"vmWare" + keyName}>{keyName} : <span style={{color: inProgress ? "red" : "green"}}> {inProgress ? ontapInfo[keyName] + " in Progress" : "Finished" } </span> </li>
+					<li style = {listElementStyles} key={"vmWare" + keyName}>{keyName} : <span style={{color: inProgress ? "red" : "green"}}> {inProgress ? ontapInfo[keyName] + " in Progress" : "Finished" } </span> </li>
 				);
 		
 			}); 

@@ -20,19 +20,19 @@ class Statistics extends Component {
 	const tableColumns = [{
     Header: 'Counter',
     accessor: 'counter', // String-based value accessors!
-	minWidth: 250
+	minWidth: 350
   }, {
     Header: 'Number of Times',
     accessor: 'numberOfTimes',
-	minWidth: 250
+	minWidth: 200
   }, {
     Header: 'Average',
     accessor: 'average',
-	minWidth: 250
+	minWidth: 200
   }, {
     Header: 'Median',
     accessor: 'median',
-	minWidth: 250
+	minWidth: 200
   }];
 
   
@@ -49,7 +49,8 @@ class Statistics extends Component {
 	  marginBottom: 100,
 	  overflow:"hidden",
 	  textAlign: 'center',
-	  border: '1px solid black'
+	  border: '1px solid black',
+	  width: '90%'
   }
   
 	

@@ -77,6 +77,11 @@ class ChartDetails extends Component {
   // use keyName to get current key's name
   // and a[keyName] to get its value
 		
+	var headerStyles = {
+			textAlign: 'center',
+			color: 'black'
+		}
+			
 		console.log("KEY NAME: " + keyName);
 		console.log(chartData);
 		
@@ -87,12 +92,15 @@ class ChartDetails extends Component {
 			</h3>
 			
 			<div style = {stylesBarCharts}>
+			<h3 style = {headerStyles}> Top 5 VM Backup Times</h3>
 				<Bar
 					data={chartData[keyName]["VmData"]}
 					options={optionsBarGraph}
 				/>
 			</div>
 			<div style = {stylesBarCharts}>
+			
+			<h3 style = {headerStyles}> Top 5 Datastores Backup Times</h3>
 				<Bar
 					data={chartData[keyName]["DatastoreData"]}
 					options={optionsBarGraph}

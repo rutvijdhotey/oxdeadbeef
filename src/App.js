@@ -10,6 +10,8 @@ import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
+import Iframe from 'react-iframe'
+import eintstein from './images/einstein.jpg'
 
 const SideNav = withRR4();
   
@@ -58,15 +60,24 @@ class App extends Component {
         return <Statistics scvStatistics = {this.state.scvStatistics} serverStatistics = {this.state.serverStatistics} ontapStatistics = {this.state.ontapStatistics}/>;
     }
 
-    renderApiDocs = () => {
-        return <a href="https://10.235.240.74:8144/api/swagger-ui.html">Swagger Link</a>;
+
+    renderApiDocs = () => { //Replace with Swagger
+        return <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
+        width="450px"
+        height="450px"
+        id="myId"
+        className="myClassname"
+        display="initial"
+        position="relative"
+        allowFullScreen/>;
     }
 
     renderAbout = () => {
         return <div>
 				<h3>Einstein Version 1.0  &copy;</h3>
-				<h4>SnapCenter Version : 4.0</h4>
-				<h4>SnapCenter Plug-in for VMware vSphere Version : 4.0</h4>
+				<h4>SnapCenter Server Version 4.0.0.465</h4>
+				<h4>SnapCenter Plug-in for VMware vSphere Version 4.0.0.465</h4>
+
 				</div>;
     }
 	
@@ -112,7 +123,7 @@ getResourceUtilization() {
             fill: false,
             borderColor: 'red'
           },
-          {label: "Restore top5VMData",
+          {label: "Restore VM",
             data: [28, 48, 40, 19, 86, 27, 90],
             fill: false,
             borderColor: 'green'
@@ -425,6 +436,14 @@ getBackupVmChartData() {
   }
 
   render() {
+    var navStyle = {
+      backgroundColor: 'white'
+    }
+
+    var imgStyle = {
+      width: '60px',
+      height: '60px'
+    }
         var dashboardStyle = {
             width : '80%',
             float: 'right',
@@ -434,15 +453,21 @@ getBackupVmChartData() {
         };
 
         var dashboardPanelStyle = {
-            width : '18.5%',
+          //background: '#304352',  /* fallback for old browsers */
+
+//background: '-webkit-linear-gradient(to bottom, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
+
+//background: 'linear-gradient(to bottom, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+            width : '15%',
             marginRight: '0px',
             margin: '0px',
             clear: 'both',
             height: '230%',
             color: 'black',
             position: 'absolute',
-            border: '2px solid black',
-            paddingTop: '20px'
+            border: '2px solid black'
          };
 
     return (
@@ -452,8 +477,13 @@ getBackupVmChartData() {
 			  <Col sm="2" >
 
 				<div style={dashboardPanelStyle}>
-        <h3 style = {{textAlign: 'center'}}> Einstein </h3>
-				  <SideNav  default='dashboard' highlightBgColor='black' highlightColor='white'>
+        <div style = {{paddingTop: '10px' , fontFamily: 'monospace', paddingLeft: '30px' , color: 'black', fontSize: '35px', paddingBottom: '10px', backgroundColor: 'white'}}>
+
+          <img style = {imgStyle} src={eintstein} alt="eintstein" />
+   
+
+         Einstein </div>
+				  <SideNav   default='dashboard' highlightBgColor='black' highlightColor='white'>
 					<Nav id='dashboard'>
 					  <NavText>  Dashboard </NavText>
 					</Nav>
