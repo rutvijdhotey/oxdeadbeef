@@ -93,7 +93,7 @@ getResourceUtilization() {
         datasets: [
           // Add the data for the Performance here
           {label: "restoreVmdkChartData",
-            data: [65, 59, 80, 81, 56, 55, 40,12,32,43,111,212,213,215,215,213,215],
+            data: [265, 259, 280, 281, 256, 255, 240,212,232,243,211,212,213,215,215,213,215],
             fill: true,
             borderColor: 'red'
           },
@@ -115,28 +115,28 @@ getResourceUtilization() {
     //Make the AJAX CALL HERE
     this.setState({
       performanceChartData: {
-        labels : ["b1","b2","b3","b4","b5","b6","b10"],
+        labels : ["11/20/2017","11/27/2017","12/4/2017","12/11/2017","12/18/2017","12/25/2017","1/1/2018","1/8/2018"],
         datasets: [
           // Add the data for the Performance here
           {label: "Restore VMDK",
-            data: [23,26,44,67,87,99, 112],
+            data: [, ,99,99, 102,,],
             fill: false,
-            borderColor: 'red'
+            borderColor: '#ff6666'
           },
           {label: "Restore VM",
-            data: [28, 48, 40, 19, 86, 27, 90],
+            data: [,77, 77, 77, 78,,],
             fill: false,
-            borderColor: 'green'
+            borderColor: '#66b3ff'
           },
           {label: "Backup VMDK",
-            data: [11, 4, 43, 9, 6, 2, 92],
+            data: [44, 44, 45, 47, 47, 47, 47,48],
             fill: false,
-            borderColor: 'grey'
+            borderColor: '#ffb84d'
           },
           {label: "Backup VM",
-            data: [8, 12, 4, 9, 34, 7, 9],
+            data: [56, 57, 57, 62, 65, 67, 67,68],
             fill: false,
-            borderColor: 'blue'
+            borderColor: '#66cc66'
           }
         ]
       }
@@ -223,7 +223,7 @@ getBackupVmChartData() {
             data: [
               10,223,311,153,29
             ],
-            backgroundColor:'#66cc66'
+            backgroundColor:'#ffb84d'
           } 
         ]
       }
@@ -257,7 +257,7 @@ getBackupVmChartData() {
             data: [
               331,412,231,112,454
             ],
-            backgroundColor:'#66b3ff'
+            backgroundColor:'#ff6666'
             
           } 
         ]
@@ -277,7 +277,7 @@ getBackupVmChartData() {
 						  130,200,321,153,299
 						],
 						backgroundColor:
-						  'rgba(153, 102, 255, 0.6)'
+						  '#00b300'
 					    } 
 					  ]
 				  },
@@ -304,7 +304,7 @@ getBackupVmChartData() {
 						  130,200,321,153,299
 						],
 						backgroundColor:
-						  'rgba(153, 102, 255, 0.6)'
+						  '#00b300'
 					    } 
 					  ]
 				  },
@@ -331,7 +331,7 @@ getBackupVmChartData() {
 						  130,200,321,153,299
 						],
 						backgroundColor:
-						  'rgba(153, 102, 255, 0.6)'
+						  '#00b300'
 					    } 
 					  ]
 				  },
@@ -358,7 +358,7 @@ getBackupVmChartData() {
 						  130,200,321,153,299
 						],
 						backgroundColor:
-						  'rgba(153, 102, 255, 0.6)'
+						  '#00b300'
 					    } 
 					  ]
 				  },
@@ -385,7 +385,7 @@ getBackupVmChartData() {
 						  130,200,321,153,299
 						],
 						backgroundColor:
-						  'rgba(153, 102, 255, 0.6)'
+						  '#00b300'
 					    } 
 					  ]
 				  },
@@ -441,8 +441,8 @@ getBackupVmChartData() {
     }
 
     var imgStyle = {
-      width: '60px',
-      height: '60px'
+      width: '85px',
+      height: '85px'
     }
         var dashboardStyle = {
             width : '80%',
@@ -460,14 +460,15 @@ getBackupVmChartData() {
 //background: 'linear-gradient(to bottom, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
-            width : '15%',
+            width : '16%',
             marginRight: '0px',
             margin: '0px',
             clear: 'both',
             height: '230%',
             color: 'black',
             position: 'absolute',
-            border: '2px solid black'
+            border: '2px solid black',
+            
          };
 
     return (
@@ -477,7 +478,7 @@ getBackupVmChartData() {
 			  <Col sm="2" >
 
 				<div style={dashboardPanelStyle}>
-        <div style = {{paddingTop: '10px' , fontFamily: 'monospace', paddingLeft: '30px' , color: 'black', fontSize: '35px', paddingBottom: '10px', backgroundColor: 'white'}}>
+        <div style = {{marginBottom: '30px', paddingTop: '20px' , fontFamily: 'monospace', paddingLeft: '15px' , color: 'black', fontSize: '30px', paddingBottom: '10px', backgroundColor: 'white'}}>
 
           <img style = {imgStyle} src={eintstein} alt="eintstein" />
    

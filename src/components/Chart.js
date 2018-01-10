@@ -123,6 +123,7 @@ class Chart extends Component{
 		}
 		//Options Line Graph
 		var optionsLineGraph = {
+			bezierCurve : false,
 			legend: {
 				labels : {
             		useLineStyle: true
@@ -139,7 +140,7 @@ class Chart extends Component{
 		      },
 		      scaleLabel: {
 		        display: true,
-		        labelString: "Names",
+		        labelString: "Dates",
 		        fontColor: "black"
 		      }
 		    }],
@@ -193,7 +194,7 @@ class Chart extends Component{
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 Resource Group Backup Times</h3>
+					<h3 style = {headerStyles}> Top 5 VMDK Backup Times</h3>
 					<Bar
 						data={this.state.backupVmdkChartData }
 						options={this.getBarGraphOptions("BackupVMDK")}
