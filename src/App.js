@@ -115,22 +115,22 @@ getResourceUtilization() {
         labels : ["b1","b2","b3","b4","b5","b6","b10"],
         datasets: [
           // Add the data for the Performance here
-          {label: "restoreVmdkChartData",
-            data: [65, 59, 80, 81, 56, 55, 40],
+          {label: "Restore VMDK",
+            data: [23,26,44,67,87,99, 112],
             fill: false,
             borderColor: 'red'
           },
-          {label: "restoreVmChartData",
+          {label: "Restore top5VMData",
             data: [28, 48, 40, 19, 86, 27, 90],
             fill: false,
             borderColor: 'green'
           },
-          {label: "backupVmdkChartData",
+          {label: "Backup VMDK",
             data: [11, 4, 43, 9, 6, 2, 92],
             fill: false,
             borderColor: 'brown'
           },
-          {label: "backupVmChartData",
+          {label: "Backup VM",
             data: [8, 12, 4, 9, 34, 7, 9],
             fill: false,
             borderColor: 'blue'
@@ -437,22 +437,21 @@ getBackupVmChartData() {
             
 width : '80%',
 float: 'right',
-background: '#304352',  /* fallback for old browsers */
-background: '-webkit-linear-gradient(to right, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
-background: 'linear-gradient(to right, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 paddingLeft: '21px',
-paddingTop: '10px'
+paddingTop: '10px',
+height: '1400px'
           };
 
         var dashboardPanelStyle = {
 width : '18.5%',
 background: '#304352',  /* fallback for old browsers */
-background: '-webkit-linear-gradient(to left, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
-background: 'linear-gradient(to left, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: '-webkit-linear-gradient(to right, #d7d2cc, #304352)',  /* Chrome 10-25, Safari 5.1-6 */
+background: 'linear-gradient(to right, #d7d2cc, #304352)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 marginRight: '0px',
     margin: '0px',
     clear: 'both',
-    height: '150%',
+    height: '200%',
+    color: 'white',
     position: 'absolute',
     border: '2px solid black'
          };

@@ -56,23 +56,33 @@ class Chart extends Component{
 			maintainAspectRatio: true,
 			scales: {
 		    xAxes: [{
+		    	ticks: {
+                    fontSize: 13,
+                    color: 'black'
+                   },
 		    	scaleLabel: {
 			        display: true,
-			        labelString: 'Names'
+        labelString: "Names",
+        fontColor: "black",
       				},
 		            gridLines: {
 		                    display:false,
-		                    color: 'white'
+		                    color: 'black'
 		                }
 		            }],
 		    yAxes: [{
+		    	ticks: {
+                    fontSize: 13,
+                    color: 'white'
+                   },
 		    	scaleLabel: {
 			        display: true,
-			        labelString: 'time (ms)'
+			        labelString: 'Time (ms)',
+			        fontColor: 'black'
       				},
 		            gridLines: {
 		                display:false,
-		                color: 'white'
+		                color: 'black'
 		            }   
 	            }]
 		    }
@@ -109,7 +119,7 @@ class Chart extends Component{
 		
 		var headerStyles = {
 			textAlign: 'center',
-			color: 'white'
+			color: 'black'
 		}
 		//Options Line Graph
 		var optionsLineGraph = {
@@ -117,25 +127,26 @@ class Chart extends Component{
 			showLines: true,
 			scales: {
     xAxes: [{
+    	barPercentage: 0.5,
       gridLines: {
         display: true,
-        color: "white"
+        color: "black"
       },
       scaleLabel: {
         display: true,
         labelString: "Names",
-        fontColor: "white"
+        fontColor: "black"
       }
     }],
     yAxes: [{
       gridLines: {
-        color: "white",
+        color: "black",
         borderDash: [2, 5],
       },
       scaleLabel: {
         display: true,
         labelString: "Time (ms)",
-        fontColor: "white"
+        fontColor: "black"
       }
     }]
   }
@@ -152,14 +163,14 @@ class Chart extends Component{
 				</div>
 				
 				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 Vm Restores vs Time</h3>
+					<h3 style = {headerStyles}> Top 5 VM Restore Times</h3>
 					<Bar
 						data={this.state.restoreVmChartData }
 						options={this.getBarGraphOptions("RestoreVM")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 Vm Backups vs Time </h3>
+					<h3 style = {headerStyles}> Top 5 Resource Group Backup Times</h3>
 					<Bar
 						data={this.state.backupVmChartData }
 						options={this.getBarGraphOptions("BackupVM")}
@@ -167,14 +178,14 @@ class Chart extends Component{
 				</div>
 				
 				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 Vmdk Restores vs Time </h3>
+					<h3 style = {headerStyles}> Top 5 VMDK Restore Times</h3>
 					<Bar
 						data={this.state.restoreVmdkChartData }
 						options={this.getBarGraphOptions("RestoreVMDK")}
 					/>
 				</div>
 				<div style = {stylesBarCharts}>
-					<h3 style = {headerStyles}> Top 5 Vmdk Backups vs Time </h3>
+					<h3 style = {headerStyles}> Top 5 Resource Group Backup Times</h3>
 					<Bar
 						data={this.state.backupVmdkChartData }
 						options={this.getBarGraphOptions("BackupVMDK")}

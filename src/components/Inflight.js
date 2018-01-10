@@ -39,6 +39,7 @@ class Inflight extends Component {
 	
 	render() {
 		
+		
 			var vmWareInfo = this.state.inflightInformation.vmWareAPICalls;
 			const vmRows = Object.keys(vmWareInfo).map(function(keyName, keyIndex) {
 				let inProgress = (vmWareInfo[keyName] != 0);
