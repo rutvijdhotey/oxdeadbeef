@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Bar, Line, Pie} from 'react-chartjs-2';
+import { withRouter } from 'react-router-dom';
  
 class ChartDetails extends Component {
 
@@ -11,7 +12,14 @@ class ChartDetails extends Component {
 			rgBackupChartData: props.rgBackupChartData
 		}
 		console.log(this.state.rgBackupChartData);
+		this.handleChartClick = this.handleChartClick.bind(this);
 		
+	}
+	
+	handleChartClick(e){
+		this.props.history.push({
+			pathname: '/rgStatistics'
+			});
 	}
 
   render() {
@@ -71,7 +79,10 @@ class ChartDetails extends Component {
 		            }   
 	            }]
 			    }
-		}
+		};
+		
+		
+		optionsBarGraph["onClick"] = this.handleChartClick;
 	
 	var chartData = this.state.rgBackupChartData;
 	const charts = Object.keys(chartData).map(function(keyName, keyIndex) {
@@ -121,4 +132,4 @@ class ChartDetails extends Component {
   }
 }
  
-export default ChartDetails;
+export default withRouter(ChartDetails);

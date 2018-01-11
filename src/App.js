@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import Inflight from './components/Inflight';
 import MemoryStats from './components/MemoryStats';
 import Statistics from './components/Statistics';
+import RGStatistics from './components/RGStatistics';
 import ChartDetails from './ChartDetails';
 import { render } from 'react-dom';
 import { withRR4, Nav, NavText } from 'react-sidenav';
@@ -41,6 +42,7 @@ class App extends Component {
 	this.getRGBackupChartData();
     this.getInflightInformation();
     this.getResourceUtilization();
+	this.getRGStatistics();
   }
   
    renderDashboard = () => {
@@ -59,12 +61,16 @@ class App extends Component {
     renderStatistics = () => {
         return <Statistics scvStatistics = {this.state.scvStatistics} serverStatistics = {this.state.serverStatistics} ontapStatistics = {this.state.ontapStatistics}/>;
     }
+	
+	renderRGStatistics = () => {
+        return <RGStatistics rgStatistics = {this.state.rgStatistics}/>;
+    }
 
 
     renderApiDocs = () => { //Replace with Swagger
-        return <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
-        width="450px"
-        height="450px"
+        return <Iframe url="https://10.235.240.74:8144/api/swagger-ui.html"
+        width="90%"
+        height="90%"
         id="myId"
         className="myClassname"
         display="initial"
@@ -483,6 +489,53 @@ getBackupVmChartData() {
       }
     });
   }
+  
+    getRGStatistics() {
+    //Make the AJAX CALL HERE
+    this.setState({
+		  rgStatistics: {
+			  DS_1: {
+				 "getVirtualDiskById()": 100,
+				  "getVirtualMachineById()":200,
+				  "getDatastoreByMoref()": 300,
+				  "createSnapshot()": 400,
+				  "deleteSnapshot()": 500,
+				  "getAllDatastoresForVM()": 600,
+				  "getEsxHostByMoref()": 700,
+				  "powerOffVm()": 800,
+				  "destroyVM()": 900,
+				  "unregisterVM()": 1000,
+				  "setExtraConfigOptionsOnVM()": 11000
+			  },
+			  DS_2: {
+				 "getVirtualDiskById()": 100,
+				  "getVirtualMachineById()":200,
+				  "getDatastoreByMoref()": 300,
+				  "createSnapshot()": 400,
+				  "deleteSnapshot()": 500,
+				  "getAllDatastoresForVM()": 600,
+				  "getEsxHostByMoref()": 700,
+				  "powerOffVm()": 800,
+				  "destroyVM()": 900,
+				  "unregisterVM()": 1000,
+				  "setExtraConfigOptionsOnVM()": 11000
+			  },
+			  DS_3: {
+				 "getVirtualDiskById()": 100,
+				  "getVirtualMachineById()":200,
+				  "getDatastoreByMoref()": 300,
+				  "createSnapshot()": 400,
+				  "deleteSnapshot()": 500,
+				  "getAllDatastoresForVM()": 600,
+				  "getEsxHostByMoref()": 700,
+				  "powerOffVm()": 800,
+				  "destroyVM()": 900,
+				  "unregisterVM()": 1000,
+				  "setExtraConfigOptionsOnVM()": 11000
+			  }
+		  }
+		});
+  }
 
   render() {
     var navStyle = {
@@ -561,6 +614,7 @@ getBackupVmChartData() {
 				  <Route path="/inflight" render={this.renderInflight}/>
 				  <Route path="/memoryStats" render={this.renderMemoryStats}/>
 				  <Route path="/statistics" render={this.renderStatistics}/>
+				  <Route path="/rgStatistics" render={this.renderRGStatistics}/>
 				  <Route path="/apiDocs" render={this.renderApiDocs}/>
 				  <Route path="/about" render={this.renderAbout}/>
 				  <Route path="/chartDetails" render={(props) => (
