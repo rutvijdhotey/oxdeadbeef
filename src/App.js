@@ -495,44 +495,70 @@ getBackupVmChartData() {
     this.setState({
 		  rgStatistics: {
 			  DS_1: {
-				 "getVirtualDiskById()": 100,
-				  "getVirtualMachineById()":200,
-				  "getDatastoreByMoref()": 300,
-				  "createSnapshot()": 400,
-				  "deleteSnapshot()": 500,
+				  "getVirtualDiskById()": 200,
+				  "getVirtualMachineById()":15664,
+				  "getDatastoreByMoref()": 188,
+				  "createSnapshot()": 4309,
+				  "deleteSnapshot()": 4202,
 				  "getAllDatastoresForVM()": 600,
 				  "getEsxHostByMoref()": 700,
 				  "powerOffVm()": 800,
 				  "destroyVM()": 900,
 				  "unregisterVM()": 1000,
-				  "setExtraConfigOptionsOnVM()": 11000
+				  "setExtraConfigOptionsOnVM()": 135
 			  },
 			  DS_2: {
-				 "getVirtualDiskById()": 100,
-				  "getVirtualMachineById()":200,
-				  "getDatastoreByMoref()": 300,
-				  "createSnapshot()": 400,
-				  "deleteSnapshot()": 500,
-				  "getAllDatastoresForVM()": 600,
-				  "getEsxHostByMoref()": 700,
-				  "powerOffVm()": 800,
-				  "destroyVM()": 900,
-				  "unregisterVM()": 1000,
-				  "setExtraConfigOptionsOnVM()": 11000
+				 "getVirtualDiskById()": 200,
+          "getVirtualMachineById()":156,
+          "getDatastoreByMoref()": 188,
+          "createSnapshot()": 11002,
+          "deleteSnapshot()": 4202,
+          "getAllDatastoresForVM()": 600,
+          "getEsxHostByMoref()": 700,
+          "powerOffVm()": 800,
+          "destroyVM()": 900,
+          "unregisterVM()": 1000,
+          "setExtraConfigOptionsOnVM()": 135
 			  },
 			  DS_3: {
-				 "getVirtualDiskById()": 100,
-				  "getVirtualMachineById()":200,
-				  "getDatastoreByMoref()": 300,
-				  "createSnapshot()": 400,
-				  "deleteSnapshot()": 500,
-				  "getAllDatastoresForVM()": 600,
-				  "getEsxHostByMoref()": 700,
-				  "powerOffVm()": 800,
-				  "destroyVM()": 900,
-				  "unregisterVM()": 1000,
-				  "setExtraConfigOptionsOnVM()": 11000
-			  }
+				 "getVirtualDiskById()": 200,
+          "getVirtualMachineById()":156,
+          "getDatastoreByMoref()": 188,
+          "createSnapshot()": 11002,
+          "deleteSnapshot()": 4202,
+          "getAllDatastoresForVM()": 600,
+          "getEsxHostByMoref()": 700,
+          "powerOffVm()": 800,
+          "destroyVM()": 900,
+          "unregisterVM()": 1000,
+          "setExtraConfigOptionsOnVM()": 135
+			  },
+        DS_4: {
+         "getVirtualDiskById()": 200,
+          "getVirtualMachineById()":156,
+          "getDatastoreByMoref()": 188,
+          "createSnapshot()": 11002,
+          "deleteSnapshot()": 4202,
+          "getAllDatastoresForVM()": 600,
+          "getEsxHostByMoref()": 700,
+          "powerOffVm()": 800,
+          "destroyVM()": 900,
+          "unregisterVM()": 1000,
+          "setExtraConfigOptionsOnVM()": 135
+        },
+        DS_5: {
+         "getVirtualDiskById()": 200,
+          "getVirtualMachineById()":156,
+          "getDatastoreByMoref()": 188,
+          "createSnapshot()": 11002,
+          "deleteSnapshot()": 4202,
+          "getAllDatastoresForVM()": 600,
+          "getEsxHostByMoref()": 700,
+          "powerOffVm()": 800,
+          "destroyVM()": 900,
+          "unregisterVM()": 1000,
+          "setExtraConfigOptionsOnVM()": 135
+        }
 		  }
 		});
   }
